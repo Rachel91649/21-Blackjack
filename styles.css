@@ -1,3 +1,14 @@
 body {
 	background-color: teal;
 }
+
+#dealerContainer {
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+}
+#playerContainer {
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+}
