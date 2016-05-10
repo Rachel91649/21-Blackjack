@@ -5,8 +5,8 @@
 		// -do I have to create a deck before I can shuffle it...duh! how can you shuffle something you don't have. 
 			//-ok, so create a deck of 52 cards, 4 suits, 13cards to each suit. #cards are 2-10, then J, Q, K, A
 				//-what would the array look like: 
-				//-var deck = [[2, 3, 4, 5, 6, 7, 8, 9, 10, j, q, k, a], [c, h, s, d]]
-
+				var deck = [["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"], ["C", "H", "D", "S"]];
+				console.log(deck);
 			//-shuffle cards. 
 //  2. deal to player
 		//-how does the computer know to deal?
@@ -37,5 +37,5 @@ $hit.click(function(){
 });
 $stay.click(function(){
 	console.log("stay clicked");
-})
+});
 
