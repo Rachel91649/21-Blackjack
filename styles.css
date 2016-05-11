@@ -1,20 +1,37 @@
 body {
-	background-color: teal;
+	background-color: grey;
+}
+h1 {
+	text-align: center;
 }
 #gameBoard {
-	background-color: grey;
+	margin: 0 auto;
+	background-color: teal;
 	height: 600px;
 	width: 600px;
 }
 #dealerContainer {
-	background-color: black;
-	width: 250px;
-	height: 250px;
+	background-color: blue;
+	width: 200px;
+	height: 80px;
 	margin: 0 auto;
 }
 #playerContainer {
-	background-color: white;
-	width: 300px;
-	height: 300px;
+	background-color: teal;
+	width: 200px;
+	height: 80px;
 	margin: 0 auto;
+}
+#dcard1, #dcard2, #dcard3, #dcard4, #dcard5, #pcard1, #pcard2, #pcard3, #pcard4, #pcard5 {
+	border-style: dashed;
+	border-color: black;
+	height: 50px; 
+	width: 20px;
+	display: inline-block;
+	margin: 0 auto;
+}
+#buttonContainer {
+	margin: 0 auto;
+	height: 100px;
+	width: 180px;
 }

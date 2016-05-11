@@ -21,13 +21,15 @@
 
 //my variable//
 var $hit = $("#hit");
-console.log($hit);
+//console.log($hit);
 var $stay = $("#stay");
-console.log($stay);
+//console.log($stay);
 var $dealerHand = $("#dealerCards");
-console.log($dealerHand);
+//console.log($dealerHand);
 var $playerHand = $("#playerCards");
-console.log($playerHand);
+//console.log($playerHand);
+var $dealCards = $("#dealCards");
+//console.log($dealCards);
 
 //=========================================//
 $hit.click(function(){
@@ -36,46 +38,91 @@ $hit.click(function(){
 $stay.click(function(){
 	console.log("stay clicked");
 });
+$dealCards.click(function(){
+	console.log("cards dealt");
+})
+
 
 //========= Making the Deck ===========//
 
-var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];//array of card numbers
-//console.log(cards.length); confirmed legth of cards
+var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 var values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
-//console.log(values.length); confirmed length matched the number of cards
-var suits = ["Clubs", "Hearts", "Diamonds", "Spades"];//array of card suits
-var deck = [];//empty array where new deck will be pushed into
+var suits = ["Clubs", "Hearts", "Diamonds", "Spades"];
+var deck = [];
 
 var newDeck = function(){
-	for (var c = 0; c < cards.length; c++) {//1st loop will iterate through the card numbers for the length of the array, hitting every string.
-		for (var s = 0; s < suits.length; s++) {//2nd loop will iterate through suits for every time the 1st loop iterates through card numbers. suits has to be the 2nd loop because for every 13 cards I need a suit, essentially 13*4 = 52 cards.
-				var card = { suit: "", number: "", values: ""};//create each card as an object. The object will allow me to access the suit and number of the card separately instead of the suit and number being all together. I need this in order to be able to assign a value to the numbers.
-				card.suit = suits[s];//assign a suit to each card
-				card.number = cards[c];//assign a number to each card
-				card.values = values[c];//assign the length of cards to values
-				//console.log(card);//confirm I had a card with a number and suit for ever card needed and no duplicates
-				deck.push(card);//push my new cards into the array called deck
+	for (var c = 0; c < cards.length; c++) {
+		for (var s = 0; s < suits.length; s++) {
+				var card = { suit: "", number: "", values: ""};
+				card.suit = suits[s];
+				card.number = cards[c];
+				card.values = values[c];
+				deck.push(card);
 		}
 	}
-	//console.log(deck);//prints my new deck
 };
 
-newDeck();//invoke the function newDeck
-console.log(deck);
+newDeck();
 //============= Shuffle the Deck =============//
 
-var shuffle = function(deck) {
-		for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-			return o;
-	};//i = the length of my deck; j returns a random index in from the length of the deck. switches places with the first number, then continues to pic a random indx number and switch it's place with the next index until it has filtered through the entire array.
+var shuffle = function(o) {
+	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+		return o;
+};
 
-	shuffle(deck);
+shuffle(deck);
 	console.log(deck);
 //============== deal cards ==================//
-//going to pop 2 cards from my deck array and give it to the player and dealer
-var dealCards = function(deck) {
-	
-}	
+//going to pop 2 cards from my deck array and give it to the player and dealer. I need a deal button
+// var dealCards = function(deck) {
+
+// }	
+//hardcode empty divs that will be my cards. deal function will pop cards from deck array and inner html that info to the empty divs.  then assign a class to to add styling to the cards. 
+	var card = deck;
+	console.log(card);
+	var card1 = card.pop();
+	var card2 = card.pop(1);
+	$playerHand.append(card1,[card2]);
+	console.log($playerHand);
+//now I need to append the cards to the player div. have a grabbed the player div already
+//console.log(deal);
+//deal();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =============== Code Comments ================//
+//line 45: //array of card numbers
+//console.log(cards.length); confirmed legth of cards
+//line 46: console.log(values.length); confirmed length matched the number of cards
+//line 47: array of card suits
+//line 48: empty array where new deck will be pushed into
+//line 51: 1st loop will iterate through the card numbers for the length of the array, hitting every string.
+//line 52: 2nd loop will iterate through suits for every time the 1st loop iterates through card numbers. suits has to be the 2nd loop because for every 13 cards I need a suit, essentially 13*4 = 52 cards.
+//line 53: create each card as an object. The object will allow me to access the suit and number of the card separately instead of the suit and number being all together. I need this in order to be able to assign a value to the numbers.
+//line 54: assign a suit to each card
+//line 55: assign a number to each card
+//line 56: assign the length of cards to values
+	//console.log(card);//confirm I had a card with a number and suit for ever card needed and no duplicates
+//line 57: push my new cards into the array called deck
+//line 62: invoke the function newDeck //console.log(deck);
+//line 65: i = the length of my deck; j returns a random index in from the length of the deck. switches places with the first number, then continues to pic a random indx number and switch it's place with the next index until it has filtered through the entire array.
 //============== My Scrap Code =================//
 
 //========makeing the deck===========//
