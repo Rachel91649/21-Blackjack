@@ -58,14 +58,25 @@ shuffle(deck);
 // }	
 //hardcode empty divs that will be my cards. deal function will pop cards from deck array and inner html that info to the empty divs.  then assign a class to to add styling to the cards. 
 $dealCards.click(function(){
-	var $pcard1 = $("#pcard1");
+	var card1 = deck.shift(0);
+	var card2 = deck.shift(0);
+	console.log(deck);
+	console.log(card1);
+	console.log(card2);
+	//need to create an empty array for each player and dealer for the cards, which are currently objects to be pushed into. 
+	//var $pcard1 = $("#pcard1");
 	//console.log($pcard1);
-	var $pcard2 = $("#pcard2");
+	//var $pcard2 = $("#pcard2");
 	//console.log($pcard2);
-	var $card1 = deck.shift(0);//initially used pop this takes the last element. then I found the shift function which takes the first element from the array. That is how you would normally deal cards. 
-	console.log($card1);
-	var $card2 = deck.shift(0);
-	console.log($card2);
+	//var $card1 = deck.shift(0);//initially used pop this takes the last element. then I found the shift function which takes the first element from the array. That is how you would normally deal cards. 
+	// console.log($card1);
+	// var $card2 = deck.shift(0);
+	// console.log($card2);
+	// $(function(){
+	// 	$.each($card2, function(){
+	// 		$pcard2.html(this);
+	// 	})
+	// });
 	// $pcard2.html(this.card2);
 	// $pcard2.html($card2.suit);
 	// $pcard2.html($card2.number);
