@@ -1,3 +1,4 @@
+
 //console.log("testing");
 
 
@@ -13,7 +14,7 @@ var $playerHand = $("#playerCards");
 var $dealCards = $("#dealCards");
 //console.log($dealCards);
 
-//=========================================//
+//===============Clicks and PlayerObjects==========================//
 $hit.click(function(){
 	console.log("hit clicked");
 });
@@ -21,7 +22,22 @@ $stay.click(function(){
 	console.log("stay clicked");
 });
 
+var player1 = {
+	currentHand: [],
+	// pcard2: "",
+	// pcard3: "",
+	// pcard4: "", 
+	// pcard5: "",
+	value: "" 
+}
 
+var dealer = {
+	dcard1: "",
+	dcard2: "",
+	dcard3: "",
+	dcard4: "", 
+	dcard5: "",
+}
 //========= Making the Deck ===========//
 
 var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -59,17 +75,21 @@ shuffle(deck);
 //hardcode empty divs that will be my cards. deal function will pop cards from deck array and inner html that info to the empty divs.  then assign a class to to add styling to the cards. 
 $dealCards.click(function(){
 	var card1 = deck.shift(0);
+	//card1.push(player1)
 	var card2 = deck.shift(0);
-	console.log(deck);
-	console.log(card1);
-	console.log(card2);
+	// console.log(deck);
+	// console.log(card1);
+	// console.log(card2);
+	player1.currentHand.push(card1, card2);
+	console.log(player1);
 	//need to create an empty array for each player and dealer for the cards, which are currently objects to be pushed into. 
 	//var $pcard1 = $("#pcard1");
 	//console.log($pcard1);
 	//var $pcard2 = $("#pcard2");
 	//console.log($pcard2);
 	//var $card1 = deck.shift(0);//initially used pop this takes the last element. then I found the shift function which takes the first element from the array. That is how you would normally deal cards. 
-	// console.log($card1);
+	//console.log($card1);
+	// var $pcard2 = $("#pcard2");
 	// var $card2 = deck.shift(0);
 	// console.log($card2);
 	// $(function(){
