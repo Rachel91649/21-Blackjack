@@ -1,14 +1,18 @@
 body {
+	background-image: url(images/brickwall.jpg);
 	background-color: grey;
 }
 h1 {
+	color: white;
 	text-align: center;
 }
 #gameBoard {
 	margin: 0 auto;
 	background-color: teal;
-	height: 600px;
-	width: 600px;
+	height: 500px;
+	width: 85%;
+	border-bottom-left-radius: 60%;
+	border-bottom-right-radius: 60%;
 }
 #dealerContainer {
 	background-color: blue;

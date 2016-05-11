@@ -14,7 +14,7 @@ var $playerHand = $("#playerCards");
 var $dealCards = $("#dealCards");
 //console.log($dealCards);
 
-//===============Clicks and PlayerObjects==========================//
+//===============Clicks and Objects==========================//
 
 $stay.click(function(){
 	console.log("stay clicked");
@@ -26,15 +26,15 @@ var player1 = {
 	// pcard3: "",
 	// pcard4: "", 
 	// pcard5: "",
-	value: [] 
-}
+	value: []
+};
 
 var dealer = {
-	dCurrentHand: [],
+	currentHand: [],
 	// dcard2: "",
 	// dcard3: "",
 	// dcard4: "", 
-	value: [],
+	value: []
 }
 //========= Making the Deck ===========//
 
@@ -73,21 +73,39 @@ $dealCards.click(function(){
 	var card3 = deck.shift(0);
 	var card4 = deck.shift(0);
 	player1.currentHand.push(card1, card2);
-	dealer.dCurrentHand.push(card3, card4);
+	dealer.currentHand.push(card3, card4);
 	console.log(player1);
+	player1.value.push(player1.currentHand[0].value);
+	player1.value.push(player1.currentHand[1].value);//pushes the values from current hand object, index[0] in to the value key. How can I loop this?
+	// player1.value = holdDisBae;
+	console.log(player1.value);
+	console.log(player1.currentHand[0].value);
+	console.log(player1.currentHand[1].value);
+	var total = player1.value[0] + player1.value[1];//this will be used elsewhere
+	console.log(total);
 	console.log(dealer);
 }); 
+// function(){
+// 		for (var i = 0; i < currentHand.length; i++) {
+// 			player1.value.push(player1.currentHand[i].value);
+// 		} 
+//	} //what the fuck am I trying to do right here!!!
+//============ checking the value of cards ================//
+	//i need to iterate through the current hand, access the value of each card, add the value together and push that value into the value empty array of the player. I want it to return this.value 
+// var checkValue = function () {
+// 	var i = 0;
+// 	for(var v = 0; v < value.length; v++) {
+// 		var total = player1.value[i] + player1.value[i + 1];
+// 	} 
+// };
+// checkValue();
 
-//============ check for win ================//
 
 //============ hit button ===================//
 $hit.click(function(){
 	var card1 = deck.shift(0);
-	var card2 = deck.shift(0);
 	console.log(card1);
-	console.log(card2);
 	player1.currentHand.push(card1);
-	dealer.dCurrentHand.push(card2);
 });
 
 
