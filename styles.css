@@ -23,8 +23,8 @@ h1 {
 	margin: 0 auto;
 }
 #dcard1, #dcard2, #dcard3, #dcard4, #dcard5, #pcard1, #pcard2, #pcard3, #pcard4, #pcard5 {
-	border-style: dashed;
-	border-color: black;
+	/*border-style: dashed;
+	border-color: black;*/
 	height: 50px; 
 	width: 20px;
 	display: inline-block;

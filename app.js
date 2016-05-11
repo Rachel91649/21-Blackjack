@@ -1,23 +1,5 @@
 //console.log("testing");
-//=====Super Basic 21 game-pseudocode======//
-//  1. cards to need shuffle
-// 	-need shuffle function: how can you do this? 			an array. There are 52 cards in a deck, 4				  suits, 52/4 = 13. 
-		// -do I have to create a deck before I can shuffle it...duh! how can you shuffle something you don't have. 
-			//-ok, so create a deck of 52 cards, 4 suits, 13cards to each suit. #cards are 2-10, then J, Q, K, A
-				//-what would the array look like: 
-			//-shuffle cards. 
-//  2. deal to player
-		//-how does the computer know to deal?
-			//just make it deal once the cards have been shuffled. 
-// 	what does a deal consist of?
-			//-two cards get dealt to player, then dealer from the same deck.  no repeat cards!!
-// 3. player can hit or stay
-// 	-if hit clicked, deal 1 card from deck
-// 4. check for winner
-// 	-what is a winner?
-// 		-hand total == 21;
-// 		-hand total < 21, but higher than all other hands
-//=========================================//
+
 
 //my variable//
 var $hit = $("#hit");
@@ -38,25 +20,22 @@ $hit.click(function(){
 $stay.click(function(){
 	console.log("stay clicked");
 });
-$dealCards.click(function(){
-	console.log("cards dealt");
-})
 
 
 //========= Making the Deck ===========//
 
 var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-var values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
-var suits = ["Clubs", "Hearts", "Diamonds", "Spades"];
+var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
+var suit = ["Clubs", "Hearts", "Diamonds", "Spades"];
 var deck = [];
 
 var newDeck = function(){
 	for (var c = 0; c < cards.length; c++) {
-		for (var s = 0; s < suits.length; s++) {
-				var card = { suit: "", number: "", values: ""};
-				card.suit = suits[s];
+		for (var s = 0; s < suit.length; s++) {
+				var card = { suit: "", number: "", value: ""};
+				card.suit = suit[s];
 				card.number = cards[c];
-				card.values = values[c];
+				card.value = value[c];
 				deck.push(card);
 		}
 	}
@@ -73,17 +52,27 @@ var shuffle = function(o) {
 shuffle(deck);
 	console.log(deck);
 //============== deal cards ==================//
-//going to pop 2 cards from my deck array and give it to the player and dealer. I need a deal button
+//going to pop 2 cards from my deck array and give it to the player then pop another 2 cards and give it to dealer. I need a deal button
 // var dealCards = function(deck) {
 
 // }	
 //hardcode empty divs that will be my cards. deal function will pop cards from deck array and inner html that info to the empty divs.  then assign a class to to add styling to the cards. 
-	var card = deck;
-	console.log(card);
-	var card1 = card.pop();
-	var card2 = card.pop(1);
-	$playerHand.append(card1,[card2]);
-	console.log($playerHand);
+$dealCards.click(function(){
+	var $pcard1 = $("#pcard1");
+	//console.log($pcard1);
+	var $pcard2 = $("#pcard2");
+	//console.log($pcard2);
+	var $card1 = deck.shift(0);//initially used pop this takes the last element. then I found the shift function which takes the first element from the array. That is how you would normally deal cards. 
+	console.log($card1);
+	var $card2 = deck.shift(0);
+	console.log($card2);
+	// $pcard2.html(this.card2);
+	// $pcard2.html($card2.suit);
+	// $pcard2.html($card2.number);
+	
+}); //why can't I get the key values from the cards in my divs? what step am I missing? is just having a empty div not enough? what else do I need? do I have to access the key/value of each property separately?
+	//click function works. 
+	//I made card = deck why? I didn't need to do that. The deck is already in global scope and is accessible to be pulled in to all functions. I took var card = deck; out and it still works. 
 //now I need to append the cards to the player div. have a grabbed the player div already
 //console.log(deal);
 //deal();
@@ -123,6 +112,27 @@ shuffle(deck);
 //line 57: push my new cards into the array called deck
 //line 62: invoke the function newDeck //console.log(deck);
 //line 65: i = the length of my deck; j returns a random index in from the length of the deck. switches places with the first number, then continues to pic a random indx number and switch it's place with the next index until it has filtered through the entire array.
+
+//=====Super Basic 21 game-pseudocode======//
+//  1. cards to need shuffle
+// 	-need shuffle function: how can you do this? 			an array. There are 52 cards in a deck, 4				  suits, 52/4 = 13. 
+		// -do I have to create a deck before I can shuffle it...duh! how can you shuffle something you don't have. 
+			//-ok, so create a deck of 52 cards, 4 suits, 13cards to each suit. #cards are 2-10, then J, Q, K, A
+				//-what would the array look like: 
+			//-shuffle cards. 
+//  2. deal to player
+		//-how does the computer know to deal?
+			//just make it deal once the cards have been shuffled. 
+// 	what does a deal consist of?
+			//-two cards get dealt to player, then dealer from the same deck.  no repeat cards!!
+// 3. player can hit or stay
+// 	-if hit clicked, deal 1 card from deck
+// 4. check for winner
+// 	-what is a winner?
+// 		-hand total == 21;
+// 		-hand total < 21, but higher than all other hands
+//=========================================//
+
 //============== My Scrap Code =================//
 
 //========makeing the deck===========//
@@ -156,3 +166,14 @@ shuffle(deck);
 // 	console.log(deck);//prints my new deck
 // };
 // //console.log(newDeck);
+	//=========== Dealing Cards ==============//
+	//var card = deck;
+	//console.log(card);
+	// var $card1 = deck.pop(0);
+	// var $card2 = deck.pop(0);
+	// console.log($card2);
+	// console.log(deck);
+	// $pcard1.html($card1);
+	// console.log($pcard1);
+	// $pcard2.html($card2);
+	// console.log($pcard2);
