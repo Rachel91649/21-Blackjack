@@ -86,11 +86,21 @@ $(document).ready(function() {
 		} else if(playerTotalValue > 21) {
 			alert("Bust! You have" + playerTotalValue + "." + " " + "You Lose!");
 		} else {
-			return x;
+			return;
 		}
 	}; 
 
-			
+	var checkValue = function(){
+		var playerValue = 0;
+		var dealerValue = 0; 
+		for(var pv = 0; pv < player1.value.length; pv++) {
+			playerValue += player1.value[pv];
+		}
+		for(var dv = 0; dv < dealer.value.length; dv++) {
+			dealerValue += dealer.value[dv];
+		} checkForWin();
+	}; 
+
 	//============== deal cards ==================//
 
 	$dealCards.click(function(){
@@ -110,7 +120,7 @@ $(document).ready(function() {
 		// console.log(player1.value);
 		// console.log(player1.currentHand[0].value);
 		// console.log(player1.currentHand[1].value);	
-		var checkValue = function () {
+		var checkCurrentValue = function () {//change this into a loop that will check the values and alert
 			var playerTotal = player1.value[0] + player1.value[1];//this will be used elsewhere	
 			console.log(playerTotal);
 			var dealerTotal = dealer.value[0] + dealer.value[1];
@@ -124,7 +134,7 @@ $(document).ready(function() {
 				alert("You hit 21!!!!");
 			};
 		};
-		checkValue();
+		checkCurrentValue();
 	}); 
 
 	//============ hit button ===================//
@@ -134,7 +144,8 @@ $(document).ready(function() {
 		player1.currentHand.push(card1); 
 		player1.value.push(player1.currentHand[2].value);
 		console.log(player1.currentHand);
-		var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
+		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
+		checkValue();
 		var dealerTotal = dealer.value[0] + dealer.value[1];
 		var checkDealerTotal = function() {
 			if(dealerTotal < 19) {
@@ -152,7 +163,7 @@ $(document).ready(function() {
 		// var checkDealer = function () {
 		// }
 	});
-
+	
 	//========= Stay Button =========//
 	$stay.click(function(){
 		console.log("stay clicked");
