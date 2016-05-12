@@ -75,30 +75,8 @@ $(document).ready(function() {
 		for(var d = 0; d < dealer.value.length; d++) {
 			dealerTotalValue += dealer.value[d];
 		} console.log(dealerTotalValue, dealer.value);
-	};
-			// if(playerTotal < 21) {
-			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
-			// } else if (playerTotal > 21) {
-			// 	alert("Over 21! You Lose!");
-			// } else {
-			// 	alert("You hit 21!!");
-			// }
-		// 	var dealerTotal = dealer.value[0] + dealer.value[1];
-		// 	console.log(dealerTotal)
-		// 	console.log(playerTotal);
-		// 	// var dealerTotal = dealer.value[0] + dealer.value[1];
-		// 	// console.log(dealerTotal);
-		// 	// if (playerTotal < 21) {
-		// 	// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
-		// 	// } else if (playerTotal > 21) {
-		// 	// 	alert("Over 21! BUST!");
-		// 	// 	return playerTotal;
-		// 	// } else {
-		// 	// 	alert("You hit 21!!!!");
-		// 	// }
-		// };
-		// checkForWin();
-		//checkValue();	
+	}; // should I do check for tie function or just hard code it into the checkForWin with if/else statements?
+			
 	//============== deal cards ==================//
 
 	$dealCards.click(function(){
@@ -134,23 +112,6 @@ $(document).ready(function() {
 		};
 		checkValue();
 	}); 
-	// function(){
-	// 		for (var i = 0; i < currentHand.length; i++) {
-	// 			player1.value.push(player1.currentHand[i].value);
-	// 		} 
-	//	} //what the fuck am I trying to do right here!!!
-	//============  the value of cards ================//
-		//i need to iterate through the current hand, access the value of each card, add the value together and push that value into the value empty array of the player. I want it to return this.value 
-	
-	// checkValue();
-	// var checkValue = function (player1, dealer) {
-	// 	var i = 0;
-	// 	for(var v = 0; v < value.length; v++) {
-	// 		var total = player1.value[i] + player1.value[i + 1];
-	// 	} 
-	// };
-	// checkValue();
-
 
 	//============ hit button ===================//
 	$hit.click(function(){///LOL!! my button is called $hit.click! 
@@ -177,8 +138,6 @@ $(document).ready(function() {
 		//try storing the totals in the global scope so that you don't have to keep declaring them. 
 		// var checkDealer = function () {
 		// }
-		
-		//now I need for it to check for win. somewhat same as my check for value, but I need for it to automatically add a card to the dealer when player hits and dealer totalValue is <19. but it's time to sleep so I can have brain power tomorrow! lol! 
 	});
 
 	//========= Stay Button =========//
@@ -300,3 +259,44 @@ $(document).ready(function() {
 	// $pcard2.html(this.card2);
 	// $pcard2.html($card2.suit);
 	// $pcard2.html($card2.number);
+		//======checkForWin=============//
+	// if(playerTotal < 21) {
+			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
+			// } else if (playerTotal > 21) {
+			// 	alert("Over 21! You Lose!");
+			// } else {
+			// 	alert("You hit 21!!");
+			// }
+		// 	var dealerTotal = dealer.value[0] + dealer.value[1];
+		// 	console.log(dealerTotal)
+		// 	console.log(playerTotal);
+		// 	// var dealerTotal = dealer.value[0] + dealer.value[1];
+		// 	// console.log(dealerTotal);
+		// 	// if (playerTotal < 21) {
+		// 	// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
+		// 	// } else if (playerTotal > 21) {
+		// 	// 	alert("Over 21! BUST!");
+		// 	// 	return playerTotal;
+		// 	// } else {
+		// 	// 	alert("You hit 21!!!!");
+		// 	// }
+		// };
+		// checkForWin();
+		//checkValue();	
+			//============= Check Value ========//
+		// function(){
+	// 		for (var i = 0; i < currentHand.length; i++) {
+	// 			player1.value.push(player1.currentHand[i].value);
+	// 		} 
+	//	} //what the fuck am I trying to do right here!!!
+	//============  the value of cards ================//
+		//i need to iterate through the current hand, access the value of each card, add the value together and push that value into the value empty array of the player. I want it to return this.value 
+	
+	// checkValue();
+	// var checkValue = function (player1, dealer) {
+	// 	var i = 0;
+	// 	for(var v = 0; v < value.length; v++) {
+	// 		var total = player1.value[i] + player1.value[i + 1];
+	// 	} 
+	// };
+	// checkValue();		
