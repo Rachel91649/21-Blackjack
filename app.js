@@ -111,14 +111,20 @@ $(document).ready(function() {
 	//============== deal cards ==================//
 
 	$dealCards.click(function(){
-		var card1 = deck.shift(0);
-		var card2 = deck.shift(0);
-		var card3 = deck.shift(0);
-		var card4 = deck.shift(0);
-		player1.currentHand.push(card1, card2);
-		dealer.currentHand.push(card3, card4);
-		player1.value.push(player1.currentHand[0].value);
-		player1.value.push(player1.currentHand[1].value);//pushes the values from current hand object, index[0] in to the value key. How can I loop this?
+		var card;
+		for(var c = 0; c < 2; c++) {
+			card = deck.shift(0);
+			player1.currentHand.push(card);
+			player1.value.push(player1.currentHand[c].value);
+		}; console.log(player1.value);
+		// var card1 = deck.shift(0);
+		// var card2 = deck.shift(0);
+		// var card3 = deck.shift(0);
+		// var card4 = deck.shift(0);
+		// player1.currentHand.push(card1, card2);
+		// dealer.currentHand.push(card3, card4);
+		// player1.value.push(player1.currentHand[0].value);
+		// player1.value.push(player1.currentHand[1].value);//pushes the values from current hand object, index[0] in to the value key. How can I loop this?
 		// player1.value = holdDisBae;
 		console.log("player's hand", player1);
 		dealer.value.push(dealer.currentHand[0].value);
