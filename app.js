@@ -116,12 +116,14 @@ $(document).ready(function() {
 			card = deck.shift(0);
 			player1.currentHand.push(card);
 			player1.value.push(player1.currentHand[c].value);
-		}; console.log(player1.value);
+		}; console.log("player", player1.value);
+			 console.log("player", player1.currentHand);
 		for(var d = 0; d < 2; d++) {
 			card = deck.shift(0);
 			dealer.currentHand.push(card);
 			dealer.value.push(dealer.currentHand[d].value);
-		}; console.log(dealer.value);
+		}; console.log("dealer", dealer.value);
+
 		
 		var checkCurrentValue = function () {//change this into a loop that will check the values and alert
 			var playerValue = 0;
@@ -146,23 +148,35 @@ $(document).ready(function() {
 
 	//============ hit button ===================//
 	$hit.click(function(){///LOL!! my button is called $hit.click! 
-		var card1 = deck.shift(0);
-		console.log(card1);
-		player1.currentHand.push(card1); 
-		player1.value.push(player1.currentHand[2].value);
-		console.log(player1.currentHand);
+		var card;
+		for(var c = 0; c < 1; c++) {
+			card = deck.shift(0);
+			player1.currentHand.push(card);
+			player1.value.push(player1.currentHand[c].value);
+		}; 
+		console.log("player", player1.value);
+		console.log("player", player1.currentHand);
+		console.log(deck.length);
+		// player1.currentHand.push(card1); 
+		// player1.value.push(player1.currentHand[2].value);
+		// console.log(player1.currentHand);
 		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
-		var dealerTotal = dealer.value[0] + dealer.value[1];
+		//var dealerTotal = dealer.value[0] + dealer.value[1];
 		var checkDealerTotal = function() {
-			if(dealerTotal < 19) {
-				var card1 = deck.shift(0);
-				dealer.currentHand.push(card1);
-				dealer.value.push(dealer.currentHand[2].value);
-				dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
-				console.log(dealer.currentHand);
-				console.log("dealer new total", dealerTotal);
-			} else {
-				return dealerTotal;
+			var dealerTotal = 0;
+			for(var d = 0; d < dealer.value.length; d++) {
+				dealerTotal += dealer.value[d];
+			} console.log("dealer", dealerTotal);
+			// if(dealerTotal < 19) {
+			// 	var card;
+			// 	for(var c = 0; c < 1;)
+			// 	dealer.currentHand.push(card1);
+			// 	dealer.value.push(dealer.currentHand[2].value);
+			// 	dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
+			// 	console.log(dealer.currentHand);
+			// 	console.log("dealer new total", dealerTotal);
+			// } else {
+			// 	return dealerTotal;
 			}; 
 		}; checkDealerTotal(); 
 		checkValue(); //what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
@@ -349,4 +363,25 @@ $(document).ready(function() {
 	// 		var total = player1.value[i] + player1.value[i + 1];
 	// 	} 
 	// };
-	// checkValue();		
+	// checkValue();	
+	//============= $hit Function LOL ============//	
+	// var card = deck.shift(0);
+	// 	console.log(card1);
+	// 	player1.currentHand.push(card1); 
+	// 	player1.value.push(player1.currentHand[2].value);
+	// 	console.log(player1.currentHand);
+		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
+	// var dealerTotal = dealer.value[0] + dealer.value[1];
+	// 	var checkDealerTotal = function() {
+			
+	// 		if(dealerTotal < 19) {
+	// 			var card1 = deck.shift(0);
+	// 			dealer.currentHand.push(card1);
+	// 			dealer.value.push(dealer.currentHand[2].value);
+	// 			dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
+	// 			console.log(dealer.currentHand);
+	// 			console.log("dealer new total", dealerTotal);
+	// 		} else {
+	// 			return dealerTotal;
+	// 		}; 
+	// 	}; checkDealerTotal(); 	
