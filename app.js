@@ -34,31 +34,7 @@ $(document).ready(function() {
 		// dcard4: "", 
 		value: []
 	}
-	//========= Checking for Win ==========//
-	// var checkForWin = function () {
-		// 	if(playerTotal < 21) {
-		// 		alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
-		// 	} else if (playerTotal > 21) {
-		// 		alert("Over 21! You Lose!");
-		// 	} else {
-		// 		alert("You hit 21!!");
-		// 	}
-		// 	var dealerTotal = dealer.value[0] + dealer.value[1];
-		// 	console.log(dealerTotal)
-		// 	console.log(playerTotal);
-		// 	// var dealerTotal = dealer.value[0] + dealer.value[1];
-		// 	// console.log(dealerTotal);
-		// 	// if (playerTotal < 21) {
-		// 	// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
-		// 	// } else if (playerTotal > 21) {
-		// 	// 	alert("Over 21! BUST!");
-		// 	// 	return playerTotal;
-		// 	// } else {
-		// 	// 	alert("You hit 21!!!!");
-		// 	// }
-		// };
-		// checkForWin();
-		//checkValue();
+	
 	//========= Making the Deck ===========//
 
 	var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -88,6 +64,37 @@ $(document).ready(function() {
 
 	shuffle(deck);
 		console.log(deck);
+
+	//========= Checking for Win ==========//
+	var checkForWin = function () {
+		for(var p = 0; p < player1.value.length; p++) {
+			var total = player1.value[p];
+			console.log(total);
+		} console.log(player1.value);
+	}
+			// if(playerTotal < 21) {
+			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
+			// } else if (playerTotal > 21) {
+			// 	alert("Over 21! You Lose!");
+			// } else {
+			// 	alert("You hit 21!!");
+			// }
+		// 	var dealerTotal = dealer.value[0] + dealer.value[1];
+		// 	console.log(dealerTotal)
+		// 	console.log(playerTotal);
+		// 	// var dealerTotal = dealer.value[0] + dealer.value[1];
+		// 	// console.log(dealerTotal);
+		// 	// if (playerTotal < 21) {
+		// 	// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
+		// 	// } else if (playerTotal > 21) {
+		// 	// 	alert("Over 21! BUST!");
+		// 	// 	return playerTotal;
+		// 	// } else {
+		// 	// 	alert("You hit 21!!!!");
+		// 	// }
+		// };
+		// checkForWin();
+		//checkValue();	
 	//============== deal cards ==================//
 
 	$dealCards.click(function(){
@@ -162,6 +169,7 @@ $(document).ready(function() {
 				return dealerTotal;
 			}; 
 		}; checkDealerTotal();
+		checkForWin();
 		//try storing the totals in the global scope so that you don't have to keep declaring them. 
 		// var checkDealer = function () {
 		// }
@@ -172,6 +180,7 @@ $(document).ready(function() {
 	//========= Stay Button =========//
 	$stay.click(function(){
 		console.log("stay clicked");
+		checkForWin();
 	});
 
 });
