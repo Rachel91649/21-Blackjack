@@ -71,16 +71,18 @@ $(document).ready(function() {
 		var dealerTotalValue = 0;
 		for(var p = 0; p < player1.value.length; p++) {
 			playerTotalValue += player1.value[p];
-		} console.log(playerTotalValue, player1.value);
+		} console.log("player", playerTotalValue, player1.value);
 		for(var d = 0; d < dealer.value.length; d++) {
 			dealerTotalValue += dealer.value[d];
-		} console.log(dealerTotalValue, dealer.value);
+		} console.log("dealer", dealerTotalValue, dealer.value);
 		if(playerTotalValue == 21) {
 			alert("21! You Win!");
 		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
 			alert("It's a tie");
+		} else if(playerTotalValue == dealerTotalValue) {
+			alert("It's a tie");
 		} else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {
-			alert("You have " + playerTotalValue + "!" + " " + "You Win!");
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has" + dealerTotalValue + "." + "You Win!");
 		} else if(dealerTotalValue < 21 && dealerTotalValue > playerTotalValue) {
 			alert("You have" + playerTotalValue + "," + " " + "but the dealer has" + dealerTotalValue + "." + " " + "Sorry, you lose!");
 		} else if(playerTotalValue > 21) {
@@ -95,12 +97,14 @@ $(document).ready(function() {
 		var dealerValue = 0; 
 		for(var pv = 0; pv < player1.value.length; pv++) {
 			playerValue += player1.value[pv];
-		}
+		} console.log ("player value", playerValue);
 		for(var dv = 0; dv < dealer.value.length; dv++) {
 			dealerValue += dealer.value[dv];
-		} //checkForWin();
+		} console.log("dealer value", dealerValue); //checkForWin(); 
 		if(playerValue <= 21) {
 			alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
+		} else {
+			alert("You have" + playerValue + "," + " " + "You Lose!");
 		}
 	}; 
 
@@ -124,18 +128,22 @@ $(document).ready(function() {
 		// console.log(player1.currentHand[0].value);
 		// console.log(player1.currentHand[1].value);	
 		var checkCurrentValue = function () {//change this into a loop that will check the values and alert
-			var playerTotal = player1.value[0] + player1.value[1];//this will be used elsewhere	
-			console.log(playerTotal);
-			var dealerTotal = dealer.value[0] + dealer.value[1];
-			console.log(dealerTotal);
-			if (playerTotal < 21) {
-				alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
-			} else if (playerTotal > 21) {
+			var playerValue = 0;
+			var dealerValue = 0; 
+			for(var pv = 0; pv < player1.value.length; pv++) {
+				playerValue += player1.value[pv];
+			}
+			for(var dv = 0; dv < dealer.value.length; dv++) {
+				dealerValue += dealer.value[dv];
+			} //checkForWin();
+			if(playerValue < 21) {
+				alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
+			} else if (playerValue > 21) {
 				alert("Over 21! BUST!");
 				return playerTotal;
 			} else {
 				alert("You hit 21!!!!");
-			};
+			};//but what if the dealer also had 21? does that make it a tie also?
 		};
 		checkCurrentValue();
 	}); 
@@ -148,7 +156,6 @@ $(document).ready(function() {
 		player1.value.push(player1.currentHand[2].value);
 		console.log(player1.currentHand);
 		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
-		checkValue();
 		var dealerTotal = dealer.value[0] + dealer.value[1];
 		var checkDealerTotal = function() {
 			if(dealerTotal < 19) {
@@ -157,11 +164,12 @@ $(document).ready(function() {
 				dealer.value.push(dealer.currentHand[2].value);
 				dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
 				console.log(dealer.currentHand);
-				console.log(dealerTotal);
+				console.log("dealer new total", dealerTotal);
 			} else {
 				return dealerTotal;
 			}; 
-		}; checkDealerTotal();//what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
+		}; checkDealerTotal(); 
+		checkValue(); //what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
 		//try storing the totals in the global scope so that you don't have to keep declaring them. 
 		// var checkDealer = function () {
 		// }
