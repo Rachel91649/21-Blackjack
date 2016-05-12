@@ -75,8 +75,21 @@ $(document).ready(function() {
 		for(var d = 0; d < dealer.value.length; d++) {
 			dealerTotalValue += dealer.value[d];
 		} console.log(dealerTotalValue, dealer.value);
+		if(playerTotalValue == 21) {
+			alert("21! You Win!");
+		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
+			alert("It's a tie");
+		} else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {
+			alert("You have " + playerTotalValue + "!" + " " + "You Win!");
+		} else if(dealerTotalValue < 21 && dealerTotalValue > playerTotalValue) {
+			alert("You have" + playerTotalValue + "," + " " + "but the dealer has" + dealerTotalValue + "." + " " + "Sorry, you lose!");
+		} else if(playerTotalValue > 21) {
+			alert("Bust! You have" + playerTotalValue + "." + " " + "You Lose!");
+		} else {
+			return x;
+		}
 	}; 
-	//what are winning conditions: player has 21-playerwins; dealer and player have 21 it's a tie; player has < 21 but > than dealer-player wins; dealer has < 21 but > than player-dealer wins and player loses; player goes > 21-player busts. dealer > 21 player automatically wins as long as player is not also > 21// should I do check for tie function or just hard code it into the checkForWin with if/else statements?
+
 			
 	//============== deal cards ==================//
 
@@ -134,8 +147,7 @@ $(document).ready(function() {
 			} else {
 				return dealerTotal;
 			}; 
-		}; checkDealerTotal();
-		checkForWin();
+		}; checkDealerTotal();//what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
 		//try storing the totals in the global scope so that you don't have to keep declaring them. 
 		// var checkDealer = function () {
 		// }
@@ -196,6 +208,7 @@ $(document).ready(function() {
 // 	-what is a winner?
 // 		-hand total == 21;
 // 		-hand total < 21, but higher than all other hands
+//		-what are all the possible winning conditions I can think of: player has 21-playerwins; dealer and player have 21 it's a tie; player has < 21 but > than dealer-player wins; dealer has < 21 but > than player-dealer wins and player loses; player goes > 21-player busts. dealer > 21 player automatically wins as long as player is not also > 21// should I do check for tie function or just hard code it into the checkForWin with if/else statements?
 //=========================================//
 
 //============== My Scrap Code =================//
