@@ -98,7 +98,10 @@ $(document).ready(function() {
 		}
 		for(var dv = 0; dv < dealer.value.length; dv++) {
 			dealerValue += dealer.value[dv];
-		} checkForWin();
+		} //checkForWin();
+		if(playerValue <= 21) {
+			alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
+		}
 	}; 
 
 	//============== deal cards ==================//
