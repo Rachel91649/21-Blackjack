@@ -117,22 +117,12 @@ $(document).ready(function() {
 			player1.currentHand.push(card);
 			player1.value.push(player1.currentHand[c].value);
 		}; console.log(player1.value);
-		// var card1 = deck.shift(0);
-		// var card2 = deck.shift(0);
-		// var card3 = deck.shift(0);
-		// var card4 = deck.shift(0);
-		// player1.currentHand.push(card1, card2);
-		// dealer.currentHand.push(card3, card4);
-		// player1.value.push(player1.currentHand[0].value);
-		// player1.value.push(player1.currentHand[1].value);//pushes the values from current hand object, index[0] in to the value key. How can I loop this?
-		// player1.value = holdDisBae;
-		console.log("player's hand", player1);
-		dealer.value.push(dealer.currentHand[0].value);
-		dealer.value.push(dealer.currentHand[1].value);
-		console.log("dealer's hand", dealer);//This should honestly all be a function that loops until both dealer and player have 2 cards each. Will revisit later.
-		// console.log(player1.value);
-		// console.log(player1.currentHand[0].value);
-		// console.log(player1.currentHand[1].value);	
+		for(var d = 0; d < 2; d++) {
+			card = deck.shift(0);
+			dealer.currentHand.push(card);
+			dealer.value.push(dealer.currentHand[d].value);
+		}; console.log(dealer.value);
+		
 		var checkCurrentValue = function () {//change this into a loop that will check the values and alert
 			var playerValue = 0;
 			var dealerValue = 0; 
@@ -301,6 +291,24 @@ $(document).ready(function() {
 	// $pcard2.html(this.card2);
 	// $pcard2.html($card2.suit);
 	// $pcard2.html($card2.number);
+	// $dealCards.click(function(){
+	// var card1 = deck.shift(0);
+		// var card2 = deck.shift(0);
+		// var card3 = deck.shift(0);
+		// var card4 = deck.shift(0);
+		// player1.currentHand.push(card1, card2);
+		// dealer.currentHand.push(card3, card4);
+		// player1.value.push(player1.currentHand[0].value);
+		// player1.value.push(player1.currentHand[1].value);//pushes the values from current hand object, index[0] in to the value key. How can I loop this?
+		// player1.value = holdDisBae;
+		// console.log("player's hand", player1);
+		// dealer.value.push(dealer.currentHand[0].value);
+		// dealer.value.push(dealer.currentHand[1].value);
+		// console.log("dealer's hand", dealer);//This should honestly all be a function that loops until both dealer and player have 2 cards each. Will revisit later.
+		// console.log(player1.value);
+		// console.log(player1.currentHand[0].value);
+		// console.log(player1.currentHand[1].value);
+		// });	
 		//======checkForWin=============//
 	// if(playerTotal < 21) {
 			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
