@@ -75,7 +75,8 @@ $(document).ready(function() {
 		for(var d = 0; d < dealer.value.length; d++) {
 			dealerTotalValue += dealer.value[d];
 		} console.log(dealerTotalValue, dealer.value);
-	}; // should I do check for tie function or just hard code it into the checkForWin with if/else statements?
+	}; 
+	//what are winning conditions: player has 21-playerwins; dealer and player have 21 it's a tie; player has < 21 but > than dealer-player wins; dealer has < 21 but > than player-dealer wins and player loses; player goes > 21-player busts. dealer > 21 player automatically wins as long as player is not also > 21// should I do check for tie function or just hard code it into the checkForWin with if/else statements?
 			
 	//============== deal cards ==================//
 
