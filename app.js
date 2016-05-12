@@ -82,7 +82,7 @@ $(document).ready(function() {
 		console.log("player's hand", player1);
 		dealer.value.push(dealer.currentHand[0].value);
 		dealer.value.push(dealer.currentHand[1].value);
-		console.log("dealer's hand", dealer);
+		console.log("dealer's hand", dealer);//This should honestly all be a function that loops until both dealer and player have 2 cards each. Will revisit later.
 		// console.log(player1.value);
 		// console.log(player1.currentHand[0].value);
 		// console.log(player1.currentHand[1].value);	
@@ -128,36 +128,44 @@ $(document).ready(function() {
 		player1.value.push(player1.currentHand[2].value);
 		console.log(player1.currentHand);
 		var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
-		var dealTotal = dealer.value[0] + dealer.value[1];
+		var dealerTotal = dealer.value[0] + dealer.value[1];
 		var checkDealerTotal = function() {
-			console.log(dealerTotal);
-		}
+			if(dealerTotal < 19) {
+				var card1 = deck.shift(0);
+				dealer.currentHand.push(card1);
+				dealer.value.push(dealer.currentHand[2].value);
+				console.log(dealer.currentHand);
+				console.log(dealerTotal);
+			} else {
+				return dealerTotal;
+			}
+		}; checkDealerTotal();
 		//try storing the totals in the global scope so that you don't have to keep declaring them. 
 		// var checkDealer = function () {
 		// }
-		var checkForWin = function () {
-			if(playerTotal < 21) {
-				alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
-			} else if (playerTotal > 21) {
-				alert("Over 21! You Lose!");
-			} else {
-				alert("You hit 21!!");
-			}
-			var dealerTotal = dealer.value[0] + dealer.value[1];
-			console.log(dealerTotal)
-			console.log(playerTotal);
-			// var dealerTotal = dealer.value[0] + dealer.value[1];
-			// console.log(dealerTotal);
-			// if (playerTotal < 21) {
-			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
-			// } else if (playerTotal > 21) {
-			// 	alert("Over 21! BUST!");
-			// 	return playerTotal;
-			// } else {
-			// 	alert("You hit 21!!!!");
-			// }
-		};
-		checkForWin();
+		// var checkForWin = function () {
+		// 	if(playerTotal < 21) {
+		// 		alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
+		// 	} else if (playerTotal > 21) {
+		// 		alert("Over 21! You Lose!");
+		// 	} else {
+		// 		alert("You hit 21!!");
+		// 	}
+		// 	var dealerTotal = dealer.value[0] + dealer.value[1];
+		// 	console.log(dealerTotal)
+		// 	console.log(playerTotal);
+		// 	// var dealerTotal = dealer.value[0] + dealer.value[1];
+		// 	// console.log(dealerTotal);
+		// 	// if (playerTotal < 21) {
+		// 	// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
+		// 	// } else if (playerTotal > 21) {
+		// 	// 	alert("Over 21! BUST!");
+		// 	// 	return playerTotal;
+		// 	// } else {
+		// 	// 	alert("You hit 21!!!!");
+		// 	// }
+		// };
+		// checkForWin();
 		//checkValue();
 		//now I need for it to check for win. somewhat same as my check for value, but I need for it to automatically add a card to the dealer when player hits and dealer totalValue is <19. but it's time to sleep so I can have brain power tomorrow! lol! 
 	});
