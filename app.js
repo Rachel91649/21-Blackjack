@@ -91,7 +91,7 @@ $(document).ready(function() {
 			var dealerTotal = dealer.value[0] + dealer.value[1];
 			console.log(dealerTotal);
 			if (playerTotal < 21) {
-				alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
+				alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
 			} else if (playerTotal > 21) {
 				alert("Over 21! BUST!");
 				return playerTotal;
@@ -120,14 +120,21 @@ $(document).ready(function() {
 
 
 	//============ hit button ===================//
-	$hit.click(function(){
+	$hit.click(function(){///LOL!! my button is called $hit.click! 
 		var card1 = deck.shift(0);
 		console.log(card1);
 		player1.currentHand.push(card1); 
 		player1.value.push(player1.currentHand[2].value);
 		console.log(player1.currentHand); 
 		var checkForWin = function () {
-			var playerTotal = player1.value[0] + player1.value[1] + player1.value[2];//this will be used elsewhere	
+			var playerTotal = player1.value[0] + player1.value[1] + player1.value[2];
+			if(playerTotal < 21) {
+				alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
+			} else if (playerTotal > 21) {
+				alert("Over 21! You Lose!");
+			} else {
+				alert("You hit 21!!");
+			}
 			console.log(playerTotal);
 			// var dealerTotal = dealer.value[0] + dealer.value[1];
 			// console.log(dealerTotal);
