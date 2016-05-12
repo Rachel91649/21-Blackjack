@@ -8,20 +8,28 @@ h1 {
 }
 #gameBoard {
 	margin: 0 auto;
-	background-color: teal;
+	background-color: #10530D;
 	height: 500px;
 	width: 85%;
+	border-top-right-radius: 10%;
+	border-top-left-radius: 10%;
 	border-bottom-left-radius: 60%;
 	border-bottom-right-radius: 60%;
+	border-color: #8b4500;
+	border-style: solid;
 }
 #dealerContainer {
 	background-color: blue;
 	width: 200px;
 	height: 80px;
 	margin: 0 auto;
+	/*border-color: #8b4500;
+	border-style: solid;
+	border-bottom-left-radius: 5%;
+	border-bottom-right-radius: 5%;*/
 }
 #playerContainer {
-	background-color: teal;
+	background-color: #10530D;
 	width: 200px;
 	height: 80px;
 	margin: 0 auto;
