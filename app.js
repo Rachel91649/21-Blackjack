@@ -65,6 +65,16 @@ $(document).ready(function() {
 	shuffle(deck);
 		console.log(deck);
 
+	//=========== Hit me deal ==============//
+	var playerHitMeBaby = function () {
+		var card;
+		for(var c = 0; c < 1; c++) {
+			card = deck.shift(0);
+			player1.currentHand.push(card);
+			player1.value.push(player1.currentHand[c].value);
+		}; 
+	}
+
 	//========= Checking for Win ==========//
 	var checkForWin = function () {
 		var playerTotalValue = 0;
@@ -148,12 +158,13 @@ $(document).ready(function() {
 
 	//============ hit button ===================//
 	$hit.click(function(){///LOL!! my button is called $hit.click! 
-		var card;
-		for(var c = 0; c < 1; c++) {
-			card = deck.shift(0);
-			player1.currentHand.push(card);
-			player1.value.push(player1.currentHand[c].value);
-		}; 
+		// var card;
+		// for(var c = 0; c < 1; c++) {
+		// 	card = deck.shift(0);
+		// 	player1.currentHand.push(card);
+		// 	player1.value.push(player1.currentHand[c].value);
+		// }; 
+		playerHitMeBaby();
 		console.log("player", player1.value);
 		console.log("player", player1.currentHand);
 		console.log(deck.length);
@@ -167,16 +178,16 @@ $(document).ready(function() {
 			for(var d = 0; d < dealer.value.length; d++) {
 				dealerTotal += dealer.value[d];
 			} console.log("dealer", dealerTotal);
-			// if(dealerTotal < 19) {
-			// 	var card;
-			// 	for(var c = 0; c < 1;)
-			// 	dealer.currentHand.push(card1);
-			// 	dealer.value.push(dealer.currentHand[2].value);
-			// 	dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
-			// 	console.log(dealer.currentHand);
-			// 	console.log("dealer new total", dealerTotal);
-			// } else {
-			// 	return dealerTotal;
+			if(dealerTotal < 19) {
+				var card;
+				for(var c = 0; c < 1;)
+				dealer.currentHand.push(card);
+				dealer.value.push(dealer.currentHand[2].value);
+				dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
+				console.log(dealer.currentHand);
+				console.log("dealer new total", dealerTotal);
+			} else {
+				return dealerTotal;
 			}; 
 		}; checkDealerTotal(); 
 		checkValue(); //what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
