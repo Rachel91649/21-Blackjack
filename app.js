@@ -1,114 +1,130 @@
 
-//console.log("testing");
+$(document).ready(function() {
+	//console.log("testing");
 
 
-//my variable//
-var $hit = $("#hit");
-//console.log($hit);
-var $stay = $("#stay");
-//console.log($stay);
-var $dealerHand = $("#dealerCards");
-//console.log($dealerHand);
-var $playerHand = $("#playerCards");
-//console.log($playerHand);
-var $dealCards = $("#dealCards");
-//console.log($dealCards);
+	//my variable//
+	var $hit = $("#hit");
+	//console.log($hit);
+	var $stay = $("#stay");
+	//console.log($stay);
+	var $dealerHand = $("#dealerCards");
+	//console.log($dealerHand);
+	var $playerHand = $("#playerCards");
+	//console.log($playerHand);
+	var $dealCards = $("#dealCards");
+	//console.log($dealCards);
 
-//===============Clicks and Objects==========================//
+	//===============Clicks and Objects==========================//
 
-$stay.click(function(){
-	console.log("stay clicked");
-});
+	$stay.click(function(){
+		console.log("stay clicked");
+	});
 
-var player1 = {
-	currentHand: [],
-	// pcard2: "",
-	// pcard3: "",
-	// pcard4: "", 
-	// pcard5: "",
-	value: []
-};
+	var player1 = {
+		currentHand: [],
+		// pcard2: "",
+		// pcard3: "",
+		// pcard4: "", 
+		// pcard5: "",
+		value: []
+	};
 
-var dealer = {
-	currentHand: [],
-	// dcard2: "",
-	// dcard3: "",
-	// dcard4: "", 
-	value: []
-}
-//========= Making the Deck ===========//
-
-var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
-var suit = ["Clubs", "Hearts", "Diamonds", "Spades"];
-var deck = [];
-
-var newDeck = function(){
-	for (var c = 0; c < cards.length; c++) {
-		for (var s = 0; s < suit.length; s++) {
-				var card = { suit: "", number: "", value: ""};
-				card.suit = suit[s];
-				card.number = cards[c];
-				card.value = value[c];
-				deck.push(card);
-		}
+	var dealer = {
+		currentHand: [],
+		// dcard2: "",
+		// dcard3: "",
+		// dcard4: "", 
+		value: []
 	}
-};
+	//========= Making the Deck ===========//
 
-newDeck();
-//============= Shuffle the Deck =============//
+	var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+	var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
+	var suit = ["Clubs", "Hearts", "Diamonds", "Spades"];
+	var deck = [];
 
-var shuffle = function(o) {
-	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-		return o;
-};
+	var newDeck = function(){
+		for (var c = 0; c < cards.length; c++) {
+			for (var s = 0; s < suit.length; s++) {
+					var card = { suit: "", number: "", value: ""};
+					card.suit = suit[s];
+					card.number = cards[c];
+					card.value = value[c];
+					deck.push(card);
+			}
+		}
+	};
 
-shuffle(deck);
-	console.log(deck);
-//============== deal cards ==================//
+	newDeck();
+	//============= Shuffle the Deck =============//
 
-$dealCards.click(function(){
-	var card1 = deck.shift(0);
-	var card2 = deck.shift(0);
-	var card3 = deck.shift(0);
-	var card4 = deck.shift(0);
-	player1.currentHand.push(card1, card2);
-	dealer.currentHand.push(card3, card4);
-	console.log(player1);
-	player1.value.push(player1.currentHand[0].value);
-	player1.value.push(player1.currentHand[1].value);//pushes the values from current hand object, index[0] in to the value key. How can I loop this?
-	// player1.value = holdDisBae;
-	console.log(player1.value);
-	console.log(player1.currentHand[0].value);
-	console.log(player1.currentHand[1].value);
-	var total = player1.value[0] + player1.value[1];//this will be used elsewhere
-	console.log(total);
-	console.log(dealer);
-}); 
-// function(){
-// 		for (var i = 0; i < currentHand.length; i++) {
-// 			player1.value.push(player1.currentHand[i].value);
-// 		} 
-//	} //what the fuck am I trying to do right here!!!
-//============ checking the value of cards ================//
-	//i need to iterate through the current hand, access the value of each card, add the value together and push that value into the value empty array of the player. I want it to return this.value 
-// var checkValue = function () {
-// 	var i = 0;
-// 	for(var v = 0; v < value.length; v++) {
-// 		var total = player1.value[i] + player1.value[i + 1];
-// 	} 
-// };
-// checkValue();
+	var shuffle = function(o) {
+		for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+			return o;
+	};
+
+	shuffle(deck);
+		console.log(deck);
+	//============== deal cards ==================//
+
+	$dealCards.click(function(){
+		var card1 = deck.shift(0);
+		var card2 = deck.shift(0);
+		var card3 = deck.shift(0);
+		var card4 = deck.shift(0);
+		player1.currentHand.push(card1, card2);
+		dealer.currentHand.push(card3, card4);
+		player1.value.push(player1.currentHand[0].value);
+		player1.value.push(player1.currentHand[1].value);//pushes the values from current hand object, index[0] in to the value key. How can I loop this?
+		// player1.value = holdDisBae;
+		console.log("player's hand", player1);
+		dealer.value.push(dealer.currentHand[0].value);
+		dealer.value.push(dealer.currentHand[1].value);
+		console.log("dealer's hand", dealer);
+		// console.log(player1.value);
+		// console.log(player1.currentHand[0].value);
+		// console.log(player1.currentHand[1].value);	
+		var checkValue = function () {
+			var playerTotal = player1.value[0] + player1.value[1];//this will be used elsewhere	
+			console.log(playerTotal);
+			var dealerTotal = dealer.value[0] + dealer.value[1];
+			console.log(dealerTotal);
+			if (playerTotal < 21) {
+				alert("No dice! Do you want to hit?");
+			} else {
+				alert("You hit 21!!!");
+				return playerTotal;
+			};
+		};
+		checkValue();
+	}); 
+	// function(){
+	// 		for (var i = 0; i < currentHand.length; i++) {
+	// 			player1.value.push(player1.currentHand[i].value);
+	// 		} 
+	//	} //what the fuck am I trying to do right here!!!
+	//============ checking the value of cards ================//
+		//i need to iterate through the current hand, access the value of each card, add the value together and push that value into the value empty array of the player. I want it to return this.value 
+	
+	// checkValue();
+	// var checkValue = function (player1, dealer) {
+	// 	var i = 0;
+	// 	for(var v = 0; v < value.length; v++) {
+	// 		var total = player1.value[i] + player1.value[i + 1];
+	// 	} 
+	// };
+	// checkValue();
 
 
-//============ hit button ===================//
-$hit.click(function(){
-	var card1 = deck.shift(0);
-	console.log(card1);
-	player1.currentHand.push(card1);
+	//============ hit button ===================//
+	$hit.click(function(){
+		var card1 = deck.shift(0);
+		console.log(card1);
+		player1.currentHand.push(card1);
+	});
+
 });
-
-
 
 
 
