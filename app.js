@@ -67,11 +67,15 @@ $(document).ready(function() {
 
 	//========= Checking for Win ==========//
 	var checkForWin = function () {
-		var totalValue = 0;
+		var playerTotalValue = 0;
+		var dealerTotalValue = 0;
 		for(var p = 0; p < player1.value.length; p++) {
-			totalValue += player1.value[p];
-		} console.log(totalValue, player1.value);
-	}
+			playerTotalValue += player1.value[p];
+		} console.log(playerTotalValue, player1.value);
+		for(var d = 0; d < dealer.value.length; d++) {
+			dealerTotalValue += dealer.value[d];
+		} console.log(dealerTotalValue, dealer.value);
+	};
 			// if(playerTotal < 21) {
 			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
 			// } else if (playerTotal > 21) {
