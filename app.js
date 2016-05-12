@@ -106,7 +106,7 @@ $(document).ready(function() {
 	// 			player1.value.push(player1.currentHand[i].value);
 	// 		} 
 	//	} //what the fuck am I trying to do right here!!!
-	//============ checking the value of cards ================//
+	//============  the value of cards ================//
 		//i need to iterate through the current hand, access the value of each card, add the value together and push that value into the value empty array of the player. I want it to return this.value 
 	
 	// checkValue();
@@ -126,6 +126,22 @@ $(document).ready(function() {
 		player1.currentHand.push(card1); 
 		player1.value.push(player1.currentHand[2].value);
 		console.log(player1.currentHand); 
+		var checkForWin = function () {
+			var playerTotal = player1.value[0] + player1.value[1] + player1.value[2];//this will be used elsewhere	
+			console.log(playerTotal);
+			// var dealerTotal = dealer.value[0] + dealer.value[1];
+			// console.log(dealerTotal);
+			// if (playerTotal < 21) {
+			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
+			// } else if (playerTotal > 21) {
+			// 	alert("Over 21! BUST!");
+			// 	return playerTotal;
+			// } else {
+			// 	alert("You hit 21!!!!");
+			// }
+		};
+		checkForWin();
+		//checkValue();
 		//now I need for it to check for win. somewhat same as my check for value, but I need for it to automatically add a card to the dealer when player hits and dealer totalValue is <19. but it's time to sleep so I can have brain power tomorrow! lol! 
 	});
 
