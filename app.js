@@ -67,10 +67,10 @@ $(document).ready(function() {
 
 	//========= Checking for Win ==========//
 	var checkForWin = function () {
+		var totalValue = 0;
 		for(var p = 0; p < player1.value.length; p++) {
-			var total = player1.value[p];
-			console.log(total);
-		} console.log(player1.value);
+			totalValue += player1.value[p];
+		} console.log(totalValue, player1.value);
 	}
 			// if(playerTotal < 21) {
 			// 	alert("You have " + playerTotal + "!" + " " + "Do you want to hit or stay?");
