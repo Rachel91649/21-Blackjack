@@ -134,26 +134,26 @@ $(document).ready(function() {
 			dealer.value.push(dealer.currentHand[d].value);
 		}; console.log("dealer", dealer.value);
 
-		
-		var checkCurrentValue = function () {//change this into a loop that will check the values and alert
-			var playerValue = 0;
-			var dealerValue = 0; 
-			for(var pv = 0; pv < player1.value.length; pv++) {
-				playerValue += player1.value[pv];
-			}
-			for(var dv = 0; dv < dealer.value.length; dv++) {
-				dealerValue += dealer.value[dv];
-			} //checkForWin();
-			if(playerValue < 21) {
-				alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
-			} else if (playerValue > 21) {
-				alert("Over 21! BUST!");
-				return playerTotal;
-			} else {
-				alert("You hit 21!!!!");
-			};//but what if the dealer also had 21? does that make it a tie also?
-		};
-		checkCurrentValue();
+		// var checkCurrentValue = function () {//change this into a loop that will check the values and alert
+		// 	var playerValue = 0;
+		// 	var dealerValue = 0; 
+		// 	for(var pv = 0; pv < player1.value.length; pv++) {
+		// 		playerValue += player1.value[pv];
+		// 	}
+		// 	for(var dv = 0; dv < dealer.value.length; dv++) {
+		// 		dealerValue += dealer.value[dv];
+		// 	} //checkForWin();
+		// 	if(playerValue < 21) {
+		// 		alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
+		// 	} else if (playerValue > 21) {
+		// 		alert("Over 21! BUST!");
+		// 		return playerTotal;
+		// 	} else {
+		// 		alert("You hit 21!!!!");
+		// 	};//but what if the dealer also had 21? does that make it a tie also?
+		// };
+		// checkCurrentValue();
+		checkValue();
 	}); 
 
 	//============ hit button ===================//
