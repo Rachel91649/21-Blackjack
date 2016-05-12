@@ -91,11 +91,13 @@ $(document).ready(function() {
 			var dealerTotal = dealer.value[0] + dealer.value[1];
 			console.log(dealerTotal);
 			if (playerTotal < 21) {
-				alert("No dice! Do you want to hit?");
-			} else {
-				alert("You hit 21!!!");
+				alert("You have " + playerTotal + "!" + " " + "Do you want to hit?");
+			} else if (playerTotal > 21) {
+				alert("Over 21! BUST!");
 				return playerTotal;
-			};
+			} else {
+				alert("You hit 21!!!!");
+			}
 		};
 		checkValue();
 	}); 
@@ -121,7 +123,10 @@ $(document).ready(function() {
 	$hit.click(function(){
 		var card1 = deck.shift(0);
 		console.log(card1);
-		player1.currentHand.push(card1);
+		player1.currentHand.push(card1); 
+		player1.value.push(player1.currentHand[2].value);
+		console.log(player1.currentHand); 
+		//now I need for it to check for win. somewhat same as my check for value, but I need for it to automatically add a card to the dealer when player hits and dealer totalValue is <19. but it's time to sleep so I can have brain power tomorrow! lol! 
 	});
 
 });
