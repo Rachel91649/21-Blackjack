@@ -62,11 +62,16 @@ p {
 	border-radius: 5%;
 	display: inline-block;
 }
-
+.p {
+	color: white;
+	font-family: papyrus;
+	font-size: 1em;
+	text-align: center;
+}
 #buttonContainer {
 	margin: 0 auto;
-	height: 50px;
+	height: 15px;
 	width: 180px;
 	padding-top: 25px;
-	padding-left: 41px;
+	padding-left: 75px;
 }
