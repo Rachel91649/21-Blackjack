@@ -163,6 +163,7 @@ $(document).ready(function() {
 			card = deck.shift(0);
 			player1.currentHand.push(card);
 			player1.value.push(player1.currentHand[c].value);
+			playerComeGetSome();
 		}; console.log("player", player1.value);
 			 console.log("player", player1.currentHand);
 		for(var d = 0; d < 2; d++) {
