@@ -52,11 +52,12 @@ p {
 }
 .card {
 	/*background-image: url(images/drake.jpg);*/
-	background-image: url(images/cardbackground1.jpg);
+	/*background-image: url(images/cardbackground1.jpg);*/
+	background-color: #233C4F;
 	background-image-size: ;
 	height: 150px;
 	width: 100px;
-	border-color: white;
+	border-color: black;
 	border-style: solid;
 	border-radius: 5%;
 	display: inline-block;
