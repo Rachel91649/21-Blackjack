@@ -8,12 +8,14 @@ $(document).ready(function() {
 	//console.log($hit);
 	var $stay = $("#stay");
 	//console.log($stay);
-	var $dealerHand = $("#dealerCards");
+	var $dealerHand = $("#dealerContainer");
 	//console.log($dealerHand);
-	var $playerHand = $("#playerCards");
+	var $playerHand = $("#playerContainer");
 	//console.log($playerHand);
 	var $dealCards = $("#dealCards");
 	//console.log($dealCards);
+	var $showSomething = $(".card");
+	console.log($showSomething);
 	
 
 	//===============Clicks and Objects==========================//
@@ -34,7 +36,13 @@ $(document).ready(function() {
 		// dcard4: "", 
 		value: []
 	}
-	
+	//========== Cards ===========//
+	var playerComeGetSome = function() {
+		var $div = $("<div>")
+		$div.addClass("card").appendTo($playerHand);
+		console.log($div);
+	} 
+	// playerComeGetSome();
 	//========= Making the Deck ===========//
 
 	var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -81,10 +89,10 @@ $(document).ready(function() {
 		var dealerTotalValue = 0;
 		for(var p = 0; p < player1.value.length; p++) {
 			playerTotalValue += player1.value[p];
-		} console.log("player", playerTotalValue, player1.value);
+		} //console.log("player", playerTotalValue, player1.value);
 		for(var d = 0; d < dealer.value.length; d++) {
 			dealerTotalValue += dealer.value[d];
-		} console.log("dealer", dealerTotalValue, dealer.value);
+		} //console.log("dealer", dealerTotalValue, dealer.value);
 		if(playerTotalValue == 21) {
 			alert("21! You Win!");
 		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
@@ -111,12 +119,41 @@ $(document).ready(function() {
 		for(var dv = 0; dv < dealer.value.length; dv++) {
 			dealerValue += dealer.value[dv];
 		} console.log("dealer value", dealerValue); //checkForWin(); 
+		if(dealerValue < 19) {
+			var card;
+			var i = 0;
+			card = deck.shift(0);
+			dealer.currentHand.push(card);
+			dealer.value.push(dealer.currentHand[i].value);
+			// dealerVale = dealer.value[0] + dealer.value[1] + dealer.value[2]
+			console.log(dealer.currentHand);
+			console.log("dealer new total", dealerValue);
 		if(playerValue <= 21) {
 			alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
 		} else {
 			alert("You have" + playerValue + "," + " " + "You Lose!");
 		}
+		//return dealerTotal;
+		}; 
 	}; 
+
+	// var checkDealerTotal = function() {
+	// 	var dealerTotal = 0;
+	// 	for(var d = 0; d < dealer.value.length; d++) {
+	// 		dealerTotal += dealer.value[d];
+	// 	} console.log("dealer", dealerTotal);
+	// 	if(dealerTotal < 19) {
+	// 		var card;
+	// 		for(var c = 0; c < 1;)
+	// 		dealer.currentHand.push(card);
+	// 		dealer.value.push(dealer.currentHand[2].value);
+	// 		dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
+	// 		console.log(dealer.currentHand);
+	// 		console.log("dealer new total", dealerTotal);
+	// 	} else {
+	// 		return dealerTotal;
+	// 	}; 
+	// };
 
 	//============== deal cards ==================//
 
@@ -153,7 +190,7 @@ $(document).ready(function() {
 		// 	};//but what if the dealer also had 21? does that make it a tie also?
 		// };
 		// checkCurrentValue();
-		checkValue();
+		checkForWin();
 	}); 
 
 	//============ hit button ===================//
@@ -173,23 +210,7 @@ $(document).ready(function() {
 		// console.log(player1.currentHand);
 		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
 		//var dealerTotal = dealer.value[0] + dealer.value[1];
-		var checkDealerTotal = function() {
-			var dealerTotal = 0;
-			for(var d = 0; d < dealer.value.length; d++) {
-				dealerTotal += dealer.value[d];
-			} console.log("dealer", dealerTotal);
-			if(dealerTotal < 19) {
-				var card;
-				for(var c = 0; c < 1;)
-				dealer.currentHand.push(card);
-				dealer.value.push(dealer.currentHand[2].value);
-				dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
-				console.log(dealer.currentHand);
-				console.log("dealer new total", dealerTotal);
-			} else {
-				return dealerTotal;
-			}; 
-		}; checkDealerTotal(); 
+	 //checkDealerTotal(); 
 		checkValue(); //what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
 		//try storing the totals in the global scope so that you don't have to keep declaring them. 
 		// var checkDealer = function () {

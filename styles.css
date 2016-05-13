@@ -20,8 +20,8 @@ h1 {
 }
 #dealerContainer {
 	background-color: blue;
-	width: 200px;
-	height: 80px;
+	width: 490px;
+	height: 175px;
 	margin: 0 auto;
 	/*border-color: #8b4500;
 	border-style: solid;
@@ -29,9 +29,10 @@ h1 {
 	border-bottom-right-radius: 5%;*/
 }
 #playerContainer {
+	/*background-color: teal;*/
 	background-color: #10530D;
-	width: 200px;
-	height: 80px;
+	width: 545px;
+	height: 175px;
 	margin: 0 auto;
 }
 #dcard1, #dcard2, #dcard3, #dcard4, #dcard5, #pcard1, #pcard2, #pcard3, #pcard4, #pcard5 {
@@ -44,6 +45,15 @@ h1 {
 }
 #buttonContainer {
 	margin: 0 auto;
-	height: 100px;
+	height: 50px;
 	width: 180px;
+	padding-top: 25px;
+}
+.card {
+	height: 150px;
+	width: 100px;
+	border-color: white;
+	border-style: solid;
+	border-radius: 10%;
+	display: inline-block;
 }
