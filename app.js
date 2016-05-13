@@ -80,11 +80,11 @@ $(document).ready(function() {
 	//=========== Hit me deal ==============//
 	var playerHitMeBaby = function () {
 		var card;
-		for(var c = 0; c < 1; c++) {
+		//for(var c = 0; c < 1; c++) {
 			card = deck.shift(0);
 			player1.currentHand.push(card);
 			player1.value.push(player1.currentHand[c].value);
-		}; 
+		//}; 
 	}
 
 	//========= Checking for Win ==========//
@@ -138,27 +138,11 @@ $(document).ready(function() {
 		} else {
 			alert("You have" + playerValue + "," + " " + "You Lose!");
 		}
-		//return dealerTotal;
+		return dealerValue;
 		}; 
 	}; 
 
-	// var checkDealerTotal = function() {
-	// 	var dealerTotal = 0;
-	// 	for(var d = 0; d < dealer.value.length; d++) {
-	// 		dealerTotal += dealer.value[d];
-	// 	} console.log("dealer", dealerTotal);
-	// 	if(dealerTotal < 19) {
-	// 		var card;
-	// 		for(var c = 0; c < 1;)
-	// 		dealer.currentHand.push(card);
-	// 		dealer.value.push(dealer.currentHand[2].value);
-	// 		dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
-	// 		console.log(dealer.currentHand);
-	// 		console.log("dealer new total", dealerTotal);
-	// 	} else {
-	// 		return dealerTotal;
-	// 	}; 
-	// };
+	
 
 	//============== deal cards ==================//
 
@@ -178,46 +162,22 @@ $(document).ready(function() {
 			dealerGetsSome();
 		}; console.log("dealer", dealer.value);
 
-		// var checkCurrentValue = function () {//change this into a loop that will check the values and alert
-		// 	var playerValue = 0;
-		// 	var dealerValue = 0; 
-		// 	for(var pv = 0; pv < player1.value.length; pv++) {
-		// 		playerValue += player1.value[pv];
-		// 	}
-		// 	for(var dv = 0; dv < dealer.value.length; dv++) {
-		// 		dealerValue += dealer.value[dv];
-		// 	} //checkForWin();
-		// 	if(playerValue < 21) {
-		// 		alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
-		// 	} else if (playerValue > 21) {
-		// 		alert("Over 21! BUST!");
-		// 		return playerTotal;
-		// 	} else {
-		// 		alert("You hit 21!!!!");
-		// 	};//but what if the dealer also had 21? does that make it a tie also?
-		// };
-		// checkCurrentValue();
+		
 		checkForWin();
-	}); 
+	});  
 
 	//============ hit button ===================//
 	$hit.click(function(){///LOL!! my button is called $hit.click! 
-		
 		playerHitMeBaby(playerComeGetSome());
-		console.log("player", player1.value);
-		console.log("player", player1.currentHand);
-		console.log(deck.length);
-		// player1.currentHand.push(card1); 
-		// player1.value.push(player1.currentHand[2].value);
-		// console.log(player1.currentHand);
-		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
-		//var dealerTotal = dealer.value[0] + dealer.value[1];
-	 //checkDealerTotal(); 
-		checkValue(); //what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
+		// console.log("player", player1.value);
+		// console.log("player", player1.currentHand);
+		// console.log(deck.length);
+		
+		 //what else do I need this to do? Once hit is pressed I need for it to check the players totals, let the player know that they have and give them the option to hit or stay. This is separate from checking the dealer's total and adding a card to the dealer if the dealer is < 19.
 		//try storing the totals in the global scope so that you don't have to keep declaring them. 
 		// var checkDealer = function () {
 		// }
-	});
+	}); 
 	
 	//========= Stay Button =========//
 	$stay.click(function(){
@@ -387,6 +347,55 @@ $(document).ready(function() {
 	// 			player1.value.push(player1.currentHand[i].value);
 	// 		} 
 	//	} //what the fuck am I trying to do right here!!!
+	// var checkCurrentValue = function () {//change this into a loop that will check the values and alert
+		// 	var playerValue = 0;
+		// 	var dealerValue = 0; 
+		// 	for(var pv = 0; pv < player1.value.length; pv++) {
+		// 		playerValue += player1.value[pv];
+		// 	}
+		// 	for(var dv = 0; dv < dealer.value.length; dv++) {
+		// 		dealerValue += dealer.value[dv];
+		// 	} //checkForWin();
+		// 	if(playerValue < 21) {
+		// 		alert("You have " + playerValue + "!" + " " + "Do you want to hit or stay?");
+		// 	} else if (playerValue > 21) {
+		// 		alert("Over 21! BUST!");
+		// 		return playerTotal;
+		// 	} else {
+		// 		alert("You hit 21!!!!");
+		// 	};//but what if the dealer also had 21? does that make it a tie also?
+		// };
+		// checkCurrentValue();
+
+		// 		if(dealerTotal < 19) {
+	// 			var card1 = deck.shift(0);
+	// 			dealer.currentHand.push(card1);
+	// 			dealer.value.push(dealer.currentHand[2].value);
+	// 			dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
+	// 			console.log(dealer.currentHand);
+	// 			console.log("dealer new total", dealerTotal);
+	// 		} else {
+	// 			return dealerTotal;
+	// 		}; 
+	// 	}; checkDealerTotal(); 	
+
+		// var checkDealerTotal = function() {
+	// 	var dealerTotal = 0;
+	// 	for(var d = 0; d < dealer.value.length; d++) {
+	// 		dealerTotal += dealer.value[d];
+	// 	} console.log("dealer", dealerTotal);
+	// 	if(dealerTotal < 19) {
+	// 		var card;
+	// 		for(var c = 0; c < 1;)
+	// 		dealer.currentHand.push(card);
+	// 		dealer.value.push(dealer.currentHand[2].value);
+	// 		dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
+	// 		console.log(dealer.currentHand);
+	// 		console.log("dealer new total", dealerTotal);
+	// 	} else {
+	// 		return dealerTotal;
+	// 	}; 
+	// };
 	//============  the value of cards ================//
 		//i need to iterate through the current hand, access the value of each card, add the value together and push that value into the value empty array of the player. I want it to return this.value 
 	
@@ -413,15 +422,11 @@ $(document).ready(function() {
 		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
 	// var dealerTotal = dealer.value[0] + dealer.value[1];
 	// 	var checkDealerTotal = function() {
-			
-	// 		if(dealerTotal < 19) {
-	// 			var card1 = deck.shift(0);
-	// 			dealer.currentHand.push(card1);
-	// 			dealer.value.push(dealer.currentHand[2].value);
-	// 			dealerTotal = dealer.value[0] + dealer.value[1] + dealer.value[2]
-	// 			console.log(dealer.currentHand);
-	// 			console.log("dealer new total", dealerTotal);
-	// 		} else {
-	// 			return dealerTotal;
-	// 		}; 
-	// 	}; checkDealerTotal(); 	
+	
+	// player1.currentHand.push(card1); 
+		// player1.value.push(player1.currentHand[2].value);
+		// console.log(player1.currentHand);
+		//var playerTotal = player1.value[0] + player1.value[1] + player1.value[2]; 
+		//var dealerTotal = dealer.value[0] + dealer.value[1];
+	 //checkDealerTotal(); 		
+	
