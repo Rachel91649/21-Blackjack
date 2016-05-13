@@ -98,6 +98,7 @@ $(document).ready(function() {
 			card = deck.shift(0);
 			player1.currentHand.push(card);
 			player1.value.push(player1.currentHand[c].value);
+			playerComeGetSome();
 		//}; 
 	}
 
@@ -120,6 +121,26 @@ $(document).ready(function() {
 		// 	dealerGetsSome();
 		if(playerTotalValue == 21) {
 			alert("You hit 21! You Win!");
+		} else if(playerTotalValue < 21) {
+			alert("You have" + playerTotalValue + "!" + " " + "Do you want to hit or stay?");
+		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
+			alert("It's a tie");
+		//} else if(playerTotalValue == dealerTotalValue) {
+			//alert("It's a tie");
+		// } else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {
+		// 	alert("You have " + playerTotalValue + "!" + " " + " and the dealer has" + dealerTotalValue + "." + "You Win!");
+		// } else if(dealerTotalValue < 21 && dealerTotalValue > playerTotalValue) {
+		// 	alert("You have" + playerTotalValue + "," + " " + "but the dealer has" + dealerTotalValue + "." + " " + "Sorry, you lose!");
+		} else if(playerTotalValue > 21) {
+			alert("Bust! You have" + playerTotalValue + "." + " " + "You Lose!");
+		} else {
+			return;
+		}
+	}; 
+
+	var checkFinalWin = function () {
+		if(playerTotalValue == 21) {
+			alert("You hit 21! You Win!");
 		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
 			alert("It's a tie");
 		} else if(playerTotalValue == dealerTotalValue) {
@@ -133,7 +154,7 @@ $(document).ready(function() {
 		} else {
 			return;
 		}
-	}; 
+	};
 	// ============= Clicks ================== //
 	$dealCards.click(function(){
 		var card;
@@ -157,7 +178,7 @@ $(document).ready(function() {
 	});  
 
 	$hit.click(function(){
-		playerHitMeBaby(playerComeGetSome());
+		playerHitMeBaby();
 		hitTheDealer();
 		checkForWin();
 		console.log("player new value", player1.value);
@@ -168,7 +189,7 @@ $(document).ready(function() {
 
 	$stay.click(function(){
 		console.log("stay clicked");
-		checkForWin();
+		checkFinalWin();
 	});
 
 });
