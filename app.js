@@ -4,138 +4,137 @@ $(document).ready(function() {
 
 
 	//my variable//
-	var $hit = $("#hit");
+	var $hit = $("#hit");//grabs the Id of hit button
 	//console.log($hit);
-	var $stay = $("#stay");
+	var $stay = $("#stay");//grabs the Id of stay button
 	//console.log($stay);
-	var $dealerHand = $("#dealerContainer");
+	var $dealerHand = $("#dealerContainer");//grabs the Id of dealerContainer
 	//console.log($dealerHand);
-	var $playerHand = $("#playerContainer");
+	var $playerHand = $("#playerContainer");//grabs the Id of playerContainer
 	//console.log($playerHand);
-	var $dealCards = $("#dealCards");
+	var $dealCards = $("#dealCards");//grabs the Id of deal button
 	//console.log($dealCards);
-	var $showSomething = $(".card");
-	//console.log($showSomething);
-	var playerTotalValue;
-	var dealerTotalValue;
+	var playerTotalValue;//holds player card totals in global scope for use in functions later
+	var dealerTotalValue;//holds dealer card totals in global scope for use in functions later
 	
 
 	//=============== Objects ==========================//
 
-	var player1 = {
-		currentHand: [],
+	var player1 = {//player1 object, holds all player1 info
+		currentHand: [],//dealt cards are pushed into empty array here
 		bank: [],
 		currentBet: [],
-		value: []//can I create a function in value that pulls the value of each card from the property currentHand and add them together.  this will need to loop through current hand in order to accomodate new cards being added. It's possible.  I might not have time to do this just yet.  I need to make the game work first. 
+		value: []//the value of each card dealt is separated from card and pushed into the empty array 
 	};
 
-	var dealer = {
-		currentHand: [], 
-		value: []
+	var dealer = {//dealer object, holds all dealer info
+		currentHand: [], //dealt cards are pushed into empty array here
+		value: []//the value of each card dealt is separated from card and pushed into the empty array
 	}
 
 	//========== Cards ===========//
-	var playerComeGetSome = function() {
-		var $div = $("<div>");
-		$div.addClass("card").appendTo($playerHand);
-		//console.log($div);
+	var playerComeGetSome = function() {//function creates visual card display for player1's cards
+		var $div = $("<div>");//creates a div
+		$div.addClass("card").appendTo($playerHand);//adds the card class to newly created div and appends that div to the playerContainer
 	} 
-	// playerComeGetSome();
-	var dealerGetsSome = function() {
-		var $div = $("<div>");
-		$div.addClass("card").appendTo($dealerHand);
+
+	var dealerGetsSome = function() {//function creates visual card display for dealer's cards
+		var $div = $("<div>");//creates a div
+		$div.addClass("card").appendTo($dealerHand);//adds the card class to newly created div and appends that div to the dealerContainer
 	}
 	//========= Making the Deck ===========//
 
-	var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
-	var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
-	var suit = ["Clubs", "Hearts", "Diamonds", "Spades"];
-	var deck = [];
+	var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];//array of the 13 number cards you find in a 52 card deck
+	var value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]//array of the value assigned to the corresponding number cards according to blackjack rules
+	var suit = ["Clubs", "Hearts", "Diamonds", "Spades"];//an array of the 4 suits found in a 52 card deck.
+	var deck = [];//empty array to push newly created cards into.
 
-	var newDeck = function(){
-		for (var c = 0; c < cards.length; c++) {
-			for (var s = 0; s < suit.length; s++) {
-					var card = { suit: "", number: "", value: ""};
-					card.suit = suit[s];
-					card.number = cards[c];
-					card.value = value[c];
-					deck.push(card);
+	var newDeck = function(){//functions creates my deck
+		for (var c = 0; c < cards.length; c++) {//1st (outer) loop will iterate through the card numbers for the length of the array, hitting every string.
+			for (var s = 0; s < suit.length; s++) {//2nd (inner) loop will iterate through suits for every time the 1st loop iterates through card numbers. suits has to be the 2nd loop because for every 13 cards I need a suit, essentially 13*4 = 52 cards.
+					var card = { suit: "", number: "", value: ""};//constructs each new card as an object. The object will allow me to access the suit, number and value of the card separately instead of the suit and number being all together.
+					card.suit = suit[s];//assigns suit to each card
+					card.number = cards[c];//assigns number to each card
+					card.value = value[c];//assigns value to each card
+					deck.push(card);//pushes newly made card objects into empty deck array.
 			}
 		}
 	};
 
-	newDeck();
+	newDeck();//invokes newDeck function to make deck
 	//============= Shuffle the Deck =============//
 
-	var shuffle = function(o) {
+	var shuffle = function(o) {//function shuffles. i = the length of my deck; j returns a random index number in the deck. the card in that index number is located and switches places with index[0]. This continues until the process has iterated through the entire length of the deck.
 		for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 			return o;
 	};
 
-	shuffle(deck);
-		console.log("my deck:", deck);
-		console.log("deck count:", deck.length);
+	shuffle(deck);//invokes the shuffle function and passes the newly create deck through in order to shuffle it.  
+		console.log("my deck:", deck);//prints my deck
+		console.log("deck count:", deck.length);//prints the # of cards in deck
 
 	//=========== Hit me deal ==============//
 	var hitTheDealer = function() {
-		if(dealerTotalValue < 18) {
-			var card;
-			var dnc = 0;
-			card = deck.shift(0);
-			dealer.currentHand.push(card);
-			dealer.value.push(dealer.currentHand[dnc].value);
-			dealerGetsSome();
+		if(dealerTotalValue < 18) {//checks dealer current value. if less than 18, creates a new card for dealer.
+			var card;//holds card
+			var dnc = 0;//counter
+			card = deck.shift(0);//takes card from top of deck
+			dealer.currentHand.push(card);//pushes card into dealer current hand
+			dealer.value.push(dealer.currentHand[dnc].value);//takes the value from card object that was pushed into current hand and pushes that info into value property.
+			dealerGetsSome();//invokes function
 		}
 	} //console.log(hitTheDealer());
-	var playerHitMeBaby = function () {
-		var card;
-		var c = 0;
-		//for(var c = 0; c < 1; c++) {
-			card = deck.shift(0);
-			player1.currentHand.push(card);
-			player1.value.push(player1.currentHand[c].value);
-			playerComeGetSome();
-		//}; 
+	var playerHitMeBaby = function () {//creates new card for player
+		var card;//holds card
+		var c = 0;//counter
+			card = deck.shift(0);//takes top card from deck
+			player1.currentHand.push(card);//pushes card to player current hand
+			player1.value.push(player1.currentHand[c].value);//takes the value from that card and pushes it into the value property
+			playerComeGetSome();//invokes function
 	}
 
 	//========= Checking for Win ==========//
-	var checkForWin = function () {
-		playerTotalValue = 0;
-		dealerTotalValue = 0;
-		for(var p = 0; p < player1.value.length; p++) {
-			playerTotalValue += player1.value[p];
+	var checkForWin = function () {//1st check for win function
+		playerTotalValue = 0;//reassigns var to 0
+		dealerTotalValue = 0;//reassigns var to 0
+		for(var p = 0; p < player1.value.length; p++) {//iterates through player1 value property
+			playerTotalValue += player1.value[p];//finds the sum of values
 		} //console.log("player", playerTotalValue, player1.value);
-		for(var d = 0; d < dealer.value.length; d++) {
-			dealerTotalValue += dealer.value[d];
+		for(var d = 0; d < dealer.value.length; d++) {//iterates through dealer value property
+			dealerTotalValue += dealer.value[d];//finds the sum of values
 		} //console.log("dealer", dealerTotalValue, dealer.value);
-		if(playerTotalValue == 21) {
-			alert("You hit 21! You Win!");
-		} else if(playerTotalValue < 21) {
-			alert("You have " + playerTotalValue + "!" + " " + " Do you want to hit or stay?");
-		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
-			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + " " + dealerTotalValue + " " + " It's a tie");
-		} else if(playerTotalValue > 21) {
-			alert("Bust! You have " + playerTotalValue + "." + " " + " You Lose!");
-		} else {
-			alert("skinamerinkydinkydink, skinamerinkydoo");
+		if(playerTotalValue == 21) {//if player's total = 21
+			alert("You hit 21! You Win!");//alert this message
+		} else if(playerTotalValue < 21) {//if player total less than 21
+			alert("You have " + playerTotalValue + "!" + " " + " Do you want to hit or stay?");//alert this message
+		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {//if both player and dealer totals = 21
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + " " + dealerTotalValue + " " + " It's a tie");//alert this message
+		} else if(playerTotalValue > 21) {//if player total is over 21
+			alert("Bust! You have " + playerTotalValue + "." + " " + " You Lose!");//alert this message
+		} else {//if some other condition occurs
+			alert("skinamerinkydinkydink, skinamerinkydoo");//alert this message. This let's me know there is a win condition in this function that I missed.
 		}
 	}; 
 
-	var checkFinalWin = function () {
-		if(playerTotalValue == 21) {
-			alert("You hit 21! You Win!");
-		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
-			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + dealerTotalValue + "." + " It's a tie");
-		} else if(playerTotalValue == dealerTotalValue) {
-			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + dealerTotalValue + "." + " " + "It's a tie");
-		} else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {
-			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + " " + dealerTotalValue + "." + " " + "You Win!");
-		} else if(dealerTotalValue <= 21 && dealerTotalValue > playerTotalValue) {
-			alert("You have " + playerTotalValue + "," + " " + " but the dealer has " + " " + dealerTotalValue + "." + " " + "Sorry, you lose!");
-		} else if(playerTotalValue > 21) {
-			alert("Bust! You have " + playerTotalValue + "." + " " + " You Lose!");
-		} else {
-			alert("Jupiter has ascended");
+	var checkFinalWin = function () {//final checkfor win function
+		if(playerTotalValue == 21) {//if player total = 21
+			alert("You hit 21! You Win!");//alert this message
+		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {//if player and dealer total = 21
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + dealerTotalValue + "." + " It's a tie");//alert this message
+		} else if(playerTotalValue == dealerTotalValue) {//if player and dealer have the same exact total
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + dealerTotalValue + "." + " " + "It's a tie");//alert this message
+		} else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {//if player total is less than 21 and greater than dealer total
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + " " + dealerTotalValue + "." + " " + "You Win!");//alert this message
+		} else if(dealerTotalValue <= 21 && dealerTotalValue > playerTotalValue) {//if dealer total is less than or equal to 21 and greater than player total
+			alert("You have " + playerTotalValue + "," + " " + " but the dealer has " + " " + dealerTotalValue + "." + " " + "Sorry, you lose!");//alert this message
+		} else if(playerTotalValue < 21 && dealerTotalValue > 21) {//if player total is less than 21 and dealer total is greater than 21
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + " " + dealerTotalValue + "." + " " + "You Win!");//alert this message
+		} else if(playerTotalValue > 21) {//if player total is greater than 21
+			alert("Bust! You have " + playerTotalValue + "." + " " + " You Lose!");//alert this message
+		} else if(playerTotalValue > 21 && dealerTotalValue > 21) {//if both player and dealer are over 21
+			alert("Bust! You have " + playerTotalValue + "." + " " + " You Lose!");//alert this message
+		} else {//if some other condition occurs
+			alert("Jupiter has ascended");//alert this message. This let's me know there is a win condition in this function that I missed.
 		}
 	};
 	// ============= Game Play ================== //
@@ -182,32 +181,7 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-
-// =============== Code Comments ================//
-//line 45: //array of card numbers
-//console.log(cards.length); confirmed legth of cards
-//line 46: console.log(values.length); confirmed length matched the number of cards
-//line 47: array of card suits
-//line 48: empty array where new deck will be pushed into
-//line 51: 1st loop will iterate through the card numbers for the length of the array, hitting every string.
-//line 52: 2nd loop will iterate through suits for every time the 1st loop iterates through card numbers. suits has to be the 2nd loop because for every 13 cards I need a suit, essentially 13*4 = 52 cards.
-//line 53: create each card as an object. The object will allow me to access the suit and number of the card separately instead of the suit and number being all together. I need this in order to be able to assign a value to the numbers.
-//line 54: assign a suit to each card
-//line 55: assign a number to each card
-//line 56: assign the length of cards to values
-//console.log(card);//confirm I had a card with a number and suit for ever card needed and no duplicates
-//line 57: push my new cards into the array called deck
-//line 62: invoke the function newDeck //console.log(deck);
-//line 65: i = the length of my deck; j returns a random index in from the length of the deck. switches places with the first number, then continues to pic a random indx number and switch it's place with the next index until it has filtered through the entire array.
-
-//=====Super Basic 21 game-pseudocode======//
+//==============Super Basic 21 game-pseudocode==================//
 //  1. cards to need shuffle
 // 	-need shuffle function: how can you do this? 			an array. There are 52 cards in a deck, 4				  suits, 52/4 = 13. 
 	// -do I have to create a deck before I can shuffle it...duh! how can you shuffle something you don't have. 
