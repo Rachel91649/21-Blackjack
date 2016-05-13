@@ -35,7 +35,7 @@ p {
 }
 #dealerContainer {
 	/*background-color: blue;*/
-	width: 490px;
+	width: 70%;
 	height: 175px;
 	margin: 0 auto;
 	/*border-color: #8b4500;
@@ -46,7 +46,7 @@ p {
 #playerContainer {
 	/*background-color: teal;*/
 	background-color: #10530D;
-	width: 545px;
+	width: 70%;
 	height: 175px;
 	margin: 0 auto;
 }
@@ -55,8 +55,8 @@ p {
 	/*background-image: url(images/cardbackground1.jpg);*/
 	background-color: #233C4F;
 	background-image-size: ;
-	height: 150px;
-	width: 100px;
+	height: 94%;
+	width: 15%;
 	border-color: black;
 	border-style: solid;
 	border-radius: 5%;
@@ -68,5 +68,5 @@ p {
 	height: 50px;
 	width: 180px;
 	padding-top: 25px;
-	padding-left: 61px;
+	padding-left: 41px;
 }

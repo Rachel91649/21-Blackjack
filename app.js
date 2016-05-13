@@ -24,18 +24,13 @@ $(document).ready(function() {
 
 	var player1 = {
 		currentHand: [],
-		// pcard2: "",
-		// pcard3: "",
-		// pcard4: "", 
-		// pcard5: "",
+		bank: [],
+		currentBet: [],
 		value: []//can I create a function in value that pulls the value of each card from the property currentHand and add them together.  this will need to loop through current hand in order to accomodate new cards being added. It's possible.  I might not have time to do this just yet.  I need to make the game work first. 
 	};
 
 	var dealer = {
-		currentHand: [],
-		// dcard2: "",
-		// dcard3: "",
-		// dcard4: "", 
+		currentHand: [], 
 		value: []
 	}
 
@@ -78,7 +73,8 @@ $(document).ready(function() {
 	};
 
 	shuffle(deck);
-		console.log(deck);
+		console.log("my deck:", deck);
+		console.log("deck count:", deck.length);
 
 	//=========== Hit me deal ==============//
 	var hitTheDealer = function() {
@@ -112,29 +108,16 @@ $(document).ready(function() {
 		for(var d = 0; d < dealer.value.length; d++) {
 			dealerTotalValue += dealer.value[d];
 		} //console.log("dealer", dealerTotalValue, dealer.value);
-		// if(dealerValue < 19) {
-		// 	var card;
-		// 	var i = 0;
-		// 	card = deck.shift(0);
-		// 	dealer.currentHand.push(card);
-		// 	dealer.value.push(dealer.currentHand[i].value);
-		// 	dealerGetsSome();
 		if(playerTotalValue == 21) {
 			alert("You hit 21! You Win!");
 		} else if(playerTotalValue < 21) {
-			alert("You have" + playerTotalValue + "!" + " " + "Do you want to hit or stay?");
+			alert("You have " + playerTotalValue + "!" + " " + " Do you want to hit or stay?");
 		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
-			alert("It's a tie");
-		//} else if(playerTotalValue == dealerTotalValue) {
-			//alert("It's a tie");
-		// } else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {
-		// 	alert("You have " + playerTotalValue + "!" + " " + " and the dealer has" + dealerTotalValue + "." + "You Win!");
-		// } else if(dealerTotalValue < 21 && dealerTotalValue > playerTotalValue) {
-		// 	alert("You have" + playerTotalValue + "," + " " + "but the dealer has" + dealerTotalValue + "." + " " + "Sorry, you lose!");
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + " " + dealerTotalValue + " " + " It's a tie");
 		} else if(playerTotalValue > 21) {
-			alert("Bust! You have" + playerTotalValue + "." + " " + "You Lose!");
+			alert("Bust! You have " + playerTotalValue + "." + " " + " You Lose!");
 		} else {
-			return;
+			alert("skinamerinkydinkydink, skinamerinkydoo");
 		}
 	}; 
 
@@ -142,20 +125,20 @@ $(document).ready(function() {
 		if(playerTotalValue == 21) {
 			alert("You hit 21! You Win!");
 		} else if(playerTotalValue == 21 && dealerTotalValue == 21) {
-			alert("It's a tie");
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + dealerTotalValue + "." + " It's a tie");
 		} else if(playerTotalValue == dealerTotalValue) {
-			alert("It's a tie");
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + dealerTotalValue + "." + " " + "It's a tie");
 		} else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {
-			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has" + dealerTotalValue + "." + "You Win!");
-		} else if(dealerTotalValue < 21 && dealerTotalValue > playerTotalValue) {
-			alert("You have" + playerTotalValue + "," + " " + "but the dealer has" + dealerTotalValue + "." + " " + "Sorry, you lose!");
+			alert("You have " + playerTotalValue + "!" + " " + " and the dealer has " + " " + dealerTotalValue + "." + " " + "You Win!");
+		} else if(dealerTotalValue <= 21 && dealerTotalValue > playerTotalValue) {
+			alert("You have " + playerTotalValue + "," + " " + " but the dealer has " + " " + dealerTotalValue + "." + " " + "Sorry, you lose!");
 		} else if(playerTotalValue > 21) {
-			alert("Bust! You have" + playerTotalValue + "." + " " + "You Lose!");
+			alert("Bust! You have " + playerTotalValue + "." + " " + " You Lose!");
 		} else {
-			return;
+			alert("Jupiter has ascended");
 		}
 	};
-	// ============= Clicks ================== //
+	// ============= Game Play ================== //
 	$dealCards.click(function(){
 		var card;
 		for(var c = 0; c < 2; c++) {
@@ -163,16 +146,16 @@ $(document).ready(function() {
 			player1.currentHand.push(card);
 			player1.value.push(player1.currentHand[c].value);
 			playerComeGetSome();
-		}; console.log("player value", player1.value);
-			 console.log("player", player1.currentHand);
+		}; console.log("player value:", player1.value);
+			 console.log("player:", player1.currentHand);
 		for(var d = 0; d < 2; d++) {
 			card = deck.shift(0);
 			dealer.currentHand.push(card);
 			dealer.value.push(dealer.currentHand[d].value);
 			dealerGetsSome();
-		}; console.log("dealer", dealer.value);
-			 console.log("dealer", dealer.currentHand);
-
+		}; console.log("dealer:", dealer.value);
+			 console.log("dealer:", dealer.currentHand);
+			 console.log("new deck count:", deck.length);
 		
 		checkForWin();
 	});  
@@ -181,14 +164,15 @@ $(document).ready(function() {
 		playerHitMeBaby();
 		hitTheDealer();
 		checkForWin();
-		console.log("player new value", player1.value);
-		console.log("player new hand", player1.currentHand);
-		console.log("dealer new value", dealer.value);
-		console.log("dealer new hand", dealer.currentHand);
+		console.log("player new value:", player1.value);
+		console.log("player new hand:", player1.currentHand);
+		console.log("dealer new value:", dealer.value);
+		console.log("dealer new hand:", dealer.currentHand);
+		console.log("new length of deck:", deck.length);
 	}); 
 
 	$stay.click(function(){
-		console.log("stay clicked");
+		//console.log("stay clicked");
 		checkFinalWin();
 	});
 
@@ -348,6 +332,19 @@ $(document).ready(function() {
 	// };
 	// checkForWin();
 	//checkValue();	
+	// if(dealerValue < 19) {
+		// 	var card;
+		// 	var i = 0;
+		// 	card = deck.shift(0);
+		// 	dealer.currentHand.push(card);
+		// 	dealer.value.push(dealer.currentHand[i].value);
+		// 	dealerGetsSome();
+		//} else if(playerTotalValue == dealerTotalValue) {
+			//alert("It's a tie");
+		// } else if(playerTotalValue < 21 && playerTotalValue > dealerTotalValue) {
+		// 	alert("You have " + playerTotalValue + "!" + " " + " and the dealer has" + dealerTotalValue + "." + "You Win!");
+		// } else if(dealerTotalValue < 21 && dealerTotalValue > playerTotalValue) {
+		// 	alert("You have" + playerTotalValue + "," + " " + "but the dealer has" + dealerTotalValue + "." + " " + "Sorry, you lose!");
 		//============= Check Value ========//
 	// function(){
 // 		for (var i = 0; i < currentHand.length; i++) {
