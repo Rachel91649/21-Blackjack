@@ -6,6 +6,20 @@ h1 {
 	color: white;
 	text-align: center;
 }
+p {
+	color: white;
+	font-family: papyrus;
+	font-size: 60px;
+	text-align: center;
+
+}
+#gameName {
+	margin: 0 auto;
+	width: 100%;
+	height: 100px;
+	/*background-color: white;*/
+	
+}
 #gameBoard {
 	margin: 0 auto;
 	background-color: #10530D;
@@ -19,7 +33,7 @@ h1 {
 	border-style: solid;
 }
 #dealerContainer {
-	background-color: blue;
+	/*background-color: blue;*/
 	width: 490px;
 	height: 175px;
 	margin: 0 auto;
@@ -35,25 +49,21 @@ h1 {
 	height: 175px;
 	margin: 0 auto;
 }
-#dcard1, #dcard2, #dcard3, #dcard4, #dcard5, #pcard1, #pcard2, #pcard3, #pcard4, #pcard5 {
-	/*border-style: dashed;
-	border-color: black;*/
-	height: 50px; 
-	width: 20px;
+.card {
+	/*background-image: url(images/drake.jpg);*/
+	background-image: url(images/cardbackground1.jpg);
+	background-image-size: ;
+	height: 150px;
+	width: 100px;
+	border-color: white;
+	border-style: solid;
+	border-radius: 5%;
 	display: inline-block;
-	margin: 0 auto;
 }
+
 #buttonContainer {
 	margin: 0 auto;
 	height: 50px;
 	width: 180px;
 	padding-top: 25px;
-}
-.card {
-	height: 150px;
-	width: 100px;
-	border-color: white;
-	border-style: solid;
-	border-radius: 10%;
-	display: inline-block;
 }

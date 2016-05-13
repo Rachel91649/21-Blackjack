@@ -15,7 +15,7 @@ $(document).ready(function() {
 	var $dealCards = $("#dealCards");
 	//console.log($dealCards);
 	var $showSomething = $(".card");
-	console.log($showSomething);
+	//console.log($showSomething);
 	
 
 	//===============Clicks and Objects==========================//
