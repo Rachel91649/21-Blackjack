@@ -2,7 +2,7 @@
 21 Blackjack game created for GA WDI
 
 
-[www.LocationOfMyProject](www.enteryourprojecturl.com)
+[http://rachel91649.github.io/21-Blackjack/](http://rachel91649.github.io/21-Blackjack/)
 
 ### Description
 This is a description of the app
