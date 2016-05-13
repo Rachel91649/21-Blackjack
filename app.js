@@ -129,6 +129,7 @@ $(document).ready(function() {
 			card = deck.shift(0);
 			dealer.currentHand.push(card);
 			dealer.value.push(dealer.currentHand[i].value);
+			dealerGetsSome();
 			// dealerVale = dealer.value[0] + dealer.value[1] + dealer.value[2]
 			console.log(dealer.currentHand);
 			console.log("dealer new total", dealerValue);
@@ -201,12 +202,7 @@ $(document).ready(function() {
 
 	//============ hit button ===================//
 	$hit.click(function(){///LOL!! my button is called $hit.click! 
-		// var card;
-		// for(var c = 0; c < 1; c++) {
-		// 	card = deck.shift(0);
-		// 	player1.currentHand.push(card);
-		// 	player1.value.push(player1.currentHand[c].value);
-		// }; 
+		
 		playerHitMeBaby(playerComeGetSome());
 		console.log("player", player1.value);
 		console.log("player", player1.currentHand);
@@ -403,6 +399,12 @@ $(document).ready(function() {
 	// };
 	// checkValue();	
 	//============= $hit Function LOL ============//	
+	// var card;
+		// for(var c = 0; c < 1; c++) {
+		// 	card = deck.shift(0);
+		// 	player1.currentHand.push(card);
+		// 	player1.value.push(player1.currentHand[c].value);
+		// }; 
 	// var card = deck.shift(0);
 	// 	console.log(card1);
 	// 	player1.currentHand.push(card1); 
