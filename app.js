@@ -38,11 +38,15 @@ $(document).ready(function() {
 	}
 	//========== Cards ===========//
 	var playerComeGetSome = function() {
-		var $div = $("<div>")
+		var $div = $("<div>");
 		$div.addClass("card").appendTo($playerHand);
 		console.log($div);
 	} 
 	// playerComeGetSome();
+	var dealerGetsSome = function() {
+		var $div = $("<div>");
+		$div.addClass("card").appendTo($dealerHand);
+	}
 	//========= Making the Deck ===========//
 
 	var cards =["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -170,6 +174,7 @@ $(document).ready(function() {
 			card = deck.shift(0);
 			dealer.currentHand.push(card);
 			dealer.value.push(dealer.currentHand[d].value);
+			dealerGetsSome();
 		}; console.log("dealer", dealer.value);
 
 		// var checkCurrentValue = function () {//change this into a loop that will check the values and alert
@@ -202,7 +207,7 @@ $(document).ready(function() {
 		// 	player1.currentHand.push(card);
 		// 	player1.value.push(player1.currentHand[c].value);
 		// }; 
-		playerHitMeBaby();
+		playerHitMeBaby(playerComeGetSome());
 		console.log("player", player1.value);
 		console.log("player", player1.currentHand);
 		console.log(deck.length);
